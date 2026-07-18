@@ -42,6 +42,15 @@ export const styles = StyleSheet.create({
     justifyContent: "center",
     gap: 11,
   },
+  contactItem: {
+    alignItems: "center",
+    flexDirection: "row",
+    gap: 3,
+  },
+  contactIcon: {
+    height: 7.5,
+    width: 7.5,
+  },
   contactText: {
     color: ink,
     fontSize: fontSizes.contact,
