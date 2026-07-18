@@ -6,6 +6,7 @@
   "scripts": {
     "dev": "vite",
     "build": "tsc -b && vite build",
+    "get-fonts": "bun scripts/get-fonts.ts",
     "generate-pdf": "bun src/generatePdf.tsx",
     "lint": "eslint .",
     "preview": "vite preview"

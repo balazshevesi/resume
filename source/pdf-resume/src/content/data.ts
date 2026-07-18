@@ -9,6 +9,7 @@ export type Contact = {
 
 export type ResumeData = {
   profile: {
+    fileName: string;
     name: string;
     contacts: Contact[];
   };
@@ -70,6 +71,7 @@ export type InlineListItem = {
 
 export const resumeData: ResumeData = {
   profile: {
+    fileName: "balazs_hevesi_software_engineering_resume",
     name: "Balazs Hevesi",
     contacts: [
       {
@@ -104,7 +106,7 @@ export const resumeData: ResumeData = {
           title: "Linnaeus University",
           subtitle:
             "Bachelor of Science, Software Technology (Computer Science)",
-          location: "Vaxjo, Sweden",
+          location: "Växjo, Sweden",
           date: new Date("2027-06-01"),
           dateLabel: "Expected graduation",
           meta: ["GPA: 3.69 / 4.0"],
@@ -155,7 +157,7 @@ export const resumeData: ResumeData = {
           ],
           bullets: [
             `Architected a serverless ${technologies.react} SPA using ${technologies.tailwind} and ${technologies.convex}, integrating the ${technologies.vercelAiSdk} to build a RAG-based chatbot that simplifies the Swedish visa migration process for non-Swedish speakers.`,
-            "Engineered an AI translation and filtering layer for the RAG pipeline, reducing multilingual context bloat and cutting observed cross-language answer failures by 99%.",
+            "Engineered an AI translation and filtering layer for the RAG pipeline, reducing multilingual context bloat and cutting observed cross-language answer failures by an estimated 95%.",
             "Led the technical execution as R&D Lead Developer, delivering a highly stable MVP under a strict deadline that was robust enough to be successfully demonstrated on Swedish national television (SVT).",
           ],
         },
@@ -209,7 +211,7 @@ export const resumeData: ResumeData = {
         },
         {
           type: "entry",
-          title: "Nar-Slutar-Lektionen.net",
+          title: "När-Slutar-Lektionen.net",
           technologies: [
             technologies.next,
             technologies.typescript,

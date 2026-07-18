@@ -20,3 +20,10 @@ result, the PDF may be parsed incorrectly by ATS systems.
 # Notes
 
 This project is inspired by this blog post: https://wkaisertexas.github.io/blog/create-your-resume-in-html-and-css/
+
+# TODO
+
+- [ ] Fix the name of the file
+- [ ] Fix additional meta data to have a "complete" pdf, "PDF structure"
+- [ ] Consider re-witting the contents, set the "ai society" as experience
+- [ ] Tune the ATS properly, (maybe even setup tests and stuff?)
