@@ -1,8 +1,9 @@
 import { Text, View } from "@react-pdf/renderer";
-import type { EntryItem, ResumeItem } from "./data";
+import type { EntryItem, ResumeItem } from "../content/data";
 import { formatEntryDate, renderLinkedText } from "./resumeFormat";
 import { styles } from "./resumeStyles";
 
+// Bullet list content, usually used for achievements, responsibilities, or contribution summaries.
 const BulletList = ({ bullets }: { bullets: string[] }) => (
   <View>
     {bullets.map((bullet) => (
@@ -14,6 +15,7 @@ const BulletList = ({ bullets }: { bullets: string[] }) => (
   </View>
 );
 
+// Detailed resume entry, usually representing a school, project, job, or similar dated experience.
 const Entry = ({ item }: { item: EntryItem }) => {
   const date = formatEntryDate(item);
   const sideMeta = [item.location, date].filter(Boolean).join(" | ");
@@ -23,11 +25,17 @@ const Entry = ({ item }: { item: EntryItem }) => {
       <View style={styles.entryHeader}>
         <View style={styles.entryMain}>
           <Text style={styles.entryTitle}>{item.title}</Text>
-          {item.subtitle ? <Text style={styles.subtitle}>{item.subtitle}</Text> : null}
-          {item.technologies ? <Text style={styles.tech}>{item.technologies.join(" | ")}</Text> : null}
+          {item.subtitle ? (
+            <Text style={styles.subtitle}>{item.subtitle}</Text>
+          ) : null}
+          {item.technologies ? (
+            <Text style={styles.tech}>{item.technologies.join(" | ")}</Text>
+          ) : null}
           {item.links ? (
             <View style={styles.links}>
-              {item.links.map((link) => renderLinkedText(link.label, link.url, link.label))}
+              {item.links.map((link) =>
+                renderLinkedText(link.label, link.url, link.label),
+              )}
             </View>
           ) : null}
         </View>
@@ -47,6 +55,7 @@ const Entry = ({ item }: { item: EntryItem }) => {
   );
 };
 
+// Dispatcher for the supported resume item types stored in the resume data file.
 export const ResumeItemView = ({ item }: { item: ResumeItem }) => {
   switch (item.type) {
     case "entry":
