@@ -3,13 +3,26 @@ import { StyleSheet } from "@react-pdf/renderer";
 const ink = "#050505";
 const rule = "#8c8c8c";
 
+const fontSizes = {
+  page: 10,
+  bulletText: 10.4,
+  contact: 10.4,
+  meta: 10.4,
+  subtitle: 10.45,
+  tech: 10.5,
+  inline: 10.6,
+  entry: 10.8,
+  sectionTitle: 12,
+  name: 24,
+};
+
 export const styles = StyleSheet.create({
   page: {
     paddingHorizontal: 24,
-    paddingVertical: 26,
+    paddingVertical: 24,
     color: ink,
     fontFamily: "Times-Roman",
-    fontSize: 10,
+    fontSize: fontSizes.page,
     lineHeight: 1.16,
   },
   header: {
@@ -19,9 +32,9 @@ export const styles = StyleSheet.create({
   name: {
     color: ink,
     fontFamily: "Times-Bold",
-    fontSize: 24,
+    fontSize: fontSizes.name,
     lineHeight: 1,
-    marginBottom: 7,
+    marginBottom: 4,
   },
   contacts: {
     flexDirection: "row",
@@ -31,7 +44,7 @@ export const styles = StyleSheet.create({
   },
   contactText: {
     color: ink,
-    fontSize: 10.4,
+    fontSize: fontSizes.contact,
     lineHeight: 1.1,
   },
   link: {
@@ -46,7 +59,7 @@ export const styles = StyleSheet.create({
     borderBottomWidth: 1,
     color: ink,
     fontFamily: "Times-Bold",
-    fontSize: 12,
+    fontSize: fontSizes.sectionTitle,
     letterSpacing: 0.2,
     lineHeight: 1.1,
     marginBottom: 4,
@@ -55,7 +68,7 @@ export const styles = StyleSheet.create({
   },
   item: {
     marginBottom: 2,
-    marginLeft: 10,
+    marginLeft: 5,
   },
   entryHeader: {
     flexDirection: "row",
@@ -72,11 +85,11 @@ export const styles = StyleSheet.create({
   },
   entryTitle: {
     fontFamily: "Times-Bold",
-    fontSize: 10.8,
+    fontSize: fontSizes.entry,
     lineHeight: 1.12,
   },
   entryText: {
-    fontSize: 10.8,
+    fontSize: fontSizes.entry,
     lineHeight: 1.12,
     marginLeft: 5.5,
   },
@@ -88,14 +101,14 @@ export const styles = StyleSheet.create({
   },
   subtitle: {
     color: ink,
-    fontSize: 10.45,
+    fontSize: fontSizes.subtitle,
     lineHeight: 1.12,
     marginBottom: 1,
   },
   meta: {
     color: ink,
     fontFamily: "Times-Bold",
-    fontSize: 10.4,
+    fontSize: fontSizes.meta,
     lineHeight: 1.12,
   },
   metaDate: {
@@ -104,20 +117,20 @@ export const styles = StyleSheet.create({
   metaLabel: {
     color: ink,
     fontFamily: "Times-Roman",
-    fontSize: 10.4,
+    fontSize: fontSizes.meta,
     lineHeight: 1.12,
   },
   metaValue: {
     color: ink,
     fontFamily: "Times-Bold",
-    fontSize: 10.4,
+    fontSize: fontSizes.meta,
     lineHeight: 1.12,
     marginLeft: 2,
   },
   tech: {
     color: ink,
     fontFamily: "Times-Italic",
-    fontSize: 10.5,
+    fontSize: fontSizes.tech,
     lineHeight: 1.12,
     marginLeft: 5.5,
   },
@@ -130,17 +143,17 @@ export const styles = StyleSheet.create({
     flexDirection: "row",
     gap: 6,
     marginTop: 1.5,
-    paddingLeft: 14,
+    paddingLeft: 10,
   },
   bullet: {
     color: ink,
-    fontSize: 10.8,
+    fontSize: fontSizes.entry,
     lineHeight: 1.12,
     width: 5,
   },
   bulletText: {
     flex: 1,
-    fontSize: 10.2,
+    fontSize: fontSizes.bulletText,
     lineHeight: 1.16,
   },
   bulletTextRegular: {
@@ -162,12 +175,12 @@ export const styles = StyleSheet.create({
   },
   inlineLabel: {
     fontFamily: "Times-Bold",
-    fontSize: 10.6,
+    fontSize: fontSizes.inline,
     lineHeight: 1.12,
   },
   inlineValues: {
     flex: 1,
-    fontSize: 10.6,
+    fontSize: fontSizes.inline,
     lineHeight: 1.12,
   },
 });
