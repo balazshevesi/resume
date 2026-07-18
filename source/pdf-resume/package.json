@@ -13,9 +13,13 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "@react-pdf/renderer": "^4.5.1",
+    "@react-pdf/renderer": "4.5.1",
     "react": "^19.2.7",
     "react-dom": "^19.2.7"
+  },
+  "overrides": {
+    "@react-pdf/render": "4.5.1",
+    "@react-pdf/pdfkit": "5.1.1"
   },
   "devDependencies": {
     "@eslint/js": "^10.0.1",

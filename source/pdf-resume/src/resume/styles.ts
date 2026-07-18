@@ -141,7 +141,8 @@ export const styles = StyleSheet.create({
   bulletRow: {
     flexDirection: "row",
     gap: 6,
-    marginTop: 1.5,
+    marginTop: 1,
+    marginBottom: 2.5,
     paddingLeft: 10,
   },
   bullet: {

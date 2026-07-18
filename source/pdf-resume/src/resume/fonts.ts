@@ -20,3 +20,6 @@ Font.register({
     },
   ],
 });
+
+// Keep words intact so PDF text extraction does not contain artificial hyphens.
+Font.registerHyphenationCallback((word) => [word]);

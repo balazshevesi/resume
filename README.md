@@ -23,7 +23,5 @@ This project is inspired by this blog post: https://wkaisertexas.github.io/blog/
 
 # TODO
 
-- [ ] fix PDF tagging, might need to postprocess or patch the library
-- [ ] Fix additional meta data to have a "complete" pdf, "PDF structure"
 - [ ] Consider re-witting the contents, set the "ai society" as experience
 - [ ] Tune the ATS properly, probably setup tests and stuff

@@ -53,7 +53,7 @@ const BulletList = ({ bullets }: { bullets: RichText[] }) => (
         role="LI"
       >
         <Text style={styles.bullet} role="Lbl">
-          •
+          -
         </Text>
         <Text style={styles.bulletText} role="LBody">
           {renderRichText(bullet)}

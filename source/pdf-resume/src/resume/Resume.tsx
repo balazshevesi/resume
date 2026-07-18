@@ -10,7 +10,10 @@ export const Resume = () => (
   <Document
     title={`${resumeData.profile.fileName}`}
     author={resumeData.profile.name}
+    subject="Software engineering resume"
+    description="Software engineering resume for Balazs Hevesi"
     language="en-US"
+    pdfVersion="1.4"
     tagged
   >
     <Page size="A4" style={styles.page}>

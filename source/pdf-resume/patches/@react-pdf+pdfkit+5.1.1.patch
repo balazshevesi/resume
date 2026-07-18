@@ -1,5 +1,5 @@
 diff --git a/node_modules/@react-pdf/pdfkit/lib/pdfkit.browser.js b/node_modules/@react-pdf/pdfkit/lib/pdfkit.browser.js
-index 6751116..904a686 100644
+index 6751116..b517bf9 100644
 --- a/node_modules/@react-pdf/pdfkit/lib/pdfkit.browser.js
 +++ b/node_modules/@react-pdf/pdfkit/lib/pdfkit.browser.js
 @@ -46887,6 +46887,13 @@ var ImagesMixin = {
@@ -73,8 +73,46 @@ index 6751116..904a686 100644
    }
  }
  
+@@ -49629,13 +49656,14 @@ var MetadataMixin = {
+     this.metadata.append(xml, newline);
+   },
+   _addInfo() {
++    const description = this.info.Description || this.info.Subject;
+     this.appendXML(`
+         <rdf:Description rdf:about="" xmlns:xmp="http://ns.adobe.com/xap/1.0/">
+             <xmp:CreateDate>${this.info.CreationDate.toISOString().split('.')[0] + 'Z'}</xmp:CreateDate>
+             <xmp:CreatorTool>${this.info.Creator}</xmp:CreatorTool>
+         </rdf:Description>
+         `);
+-    if (this.info.Title || this.info.Author || this.info.Subject) {
++    if (this.info.Title || this.info.Author || description) {
+       this.appendXML(`
+             <rdf:Description rdf:about="" xmlns:dc="http://purl.org/dc/elements/1.1/">
+             `);
+@@ -49657,14 +49685,14 @@ var MetadataMixin = {
+                 </dc:creator>
+                 `);
+       }
+-      if (this.info.Subject) {
++      if (description) {
+         this.appendXML(`
+-                <dc:description>
+-                    <rdf:Alt>
+-                        <rdf:li xml:lang="x-default">${this.info.Subject}</rdf:li>
+-                    </rdf:Alt>
+-                </dc:description>
+-                `);
++            <dc:description>
++                <rdf:Alt>
++                    <rdf:li xml:lang="x-default">${description}</rdf:li>
++                </rdf:Alt>
++            </dc:description>
++            `);
+       }
+       this.appendXML(`
+             </rdf:Description>
 diff --git a/node_modules/@react-pdf/pdfkit/lib/pdfkit.js b/node_modules/@react-pdf/pdfkit/lib/pdfkit.js
-index 3619d74..da4339c 100644
+index 3619d74..1fb21f7 100644
 --- a/node_modules/@react-pdf/pdfkit/lib/pdfkit.js
 +++ b/node_modules/@react-pdf/pdfkit/lib/pdfkit.js
 @@ -39172,6 +39172,13 @@ var ImagesMixin = {
@@ -148,3 +186,33 @@ index 3619d74..da4339c 100644
    }
  }
  
+@@ -41912,13 +41939,14 @@ var MetadataMixin = {
+     this.metadata.append(xml, newline);
+   },
+   _addInfo() {
++    const description = this.info.Description || this.info.Subject;
+     this.appendXML(`
+         <rdf:Description rdf:about="" xmlns:xmp="http://ns.adobe.com/xap/1.0/">
+             <xmp:CreateDate>${this.info.CreationDate.toISOString().split('.')[0] + 'Z'}</xmp:CreateDate>
+             <xmp:CreatorTool>${this.info.Creator}</xmp:CreatorTool>
+         </rdf:Description>
+         `);
+-    if (this.info.Title || this.info.Author || this.info.Subject) {
++    if (this.info.Title || this.info.Author || description) {
+       this.appendXML(`
+             <rdf:Description rdf:about="" xmlns:dc="http://purl.org/dc/elements/1.1/">
+             `);
+@@ -41940,11 +41968,11 @@ var MetadataMixin = {
+                 </dc:creator>
+                 `);
+       }
+-      if (this.info.Subject) {
++      if (description) {
+         this.appendXML(`
+                 <dc:description>
+                     <rdf:Alt>
+-                        <rdf:li xml:lang="x-default">${this.info.Subject}</rdf:li>
++                        <rdf:li xml:lang="x-default">${description}</rdf:li>
+                     </rdf:Alt>
+                 </dc:description>
+                 `);
