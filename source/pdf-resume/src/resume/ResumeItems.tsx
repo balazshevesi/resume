@@ -20,7 +20,7 @@ const Entry = ({ item }: { item: EntryItem }) => {
   const date = formatEntryDate(item);
 
   return (
-    <View style={styles.item} wrap={false}>
+    <View style={styles.item}>
       <View style={styles.entryHeader}>
         <View style={styles.entryMain}>
           <Text style={styles.entryTitle}>{item.title}</Text>
@@ -65,15 +65,28 @@ export const ResumeItemView = ({ item }: { item: ResumeItem }) => {
       return (
         <View style={styles.inlineRow}>
           <Text style={styles.inlineLabel}>{item.label}: </Text>
-          <Text style={styles.inlineValues}>{item.skills.join(" | ")}</Text>
+          <Text style={styles.inlineValues}>{item.skills.join(", ")}</Text>
         </View>
       );
     case "inline-list":
       return (
         <View style={styles.inlineRow}>
           <Text style={styles.inlineLabel}>{item.label}: </Text>
-          <Text style={styles.inlineValues}>{item.values.join(" | ")}</Text>
+          <Text style={styles.inlineValues}>{item.values.join(", ")}</Text>
         </View>
       );
   }
+};
+
+export const InlineGridItemView = ({ item }: { item: ResumeItem }) => {
+  if (item.type !== "inline-list") {
+    return <ResumeItemView item={item} />;
+  }
+
+  return (
+    <View style={styles.inlineGridItem}>
+      <Text style={styles.inlineLabel}>{item.label}: </Text>
+      <Text style={styles.inlineValues}>{item.values.join(", ")}</Text>
+    </View>
+  );
 };

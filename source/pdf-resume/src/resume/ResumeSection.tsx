@@ -1,6 +1,6 @@
 import { Text, View } from "@react-pdf/renderer";
 import type { ResumeSection as ResumeSectionData } from "../content/data";
-import { ResumeItemView } from "./ResumeItems";
+import { InlineGridItemView, ResumeItemView } from "./ResumeItems";
 import { styles } from "./resumeStyles";
 
 type ResumeSectionProps = {
@@ -11,8 +11,16 @@ type ResumeSectionProps = {
 export const ResumeSection = ({ section }: ResumeSectionProps) => (
   <View style={styles.section}>
     <Text style={styles.sectionTitle}>{section.title}</Text>
-    {section.items.map((item, index) => (
-      <ResumeItemView key={`${section.title}-${index}`} item={item} />
-    ))}
+    {section.title === "Other + Personal Interests" ? (
+      <View style={styles.inlineGrid}>
+        {section.items.map((item, index) => (
+          <InlineGridItemView key={`${section.title}-${index}`} item={item} />
+        ))}
+      </View>
+    ) : (
+      section.items.map((item, index) => (
+        <ResumeItemView key={`${section.title}-${index}`} item={item} />
+      ))
+    )}
   </View>
 );
