@@ -10,6 +10,7 @@ export const Resume = () => (
   <Document
     title={`${resumeData.profile.fileName}`}
     author={resumeData.profile.name}
+    language="en-US"
   >
     <Page size="A4" style={styles.page}>
       <ResumeHeader profile={resumeData.profile} />

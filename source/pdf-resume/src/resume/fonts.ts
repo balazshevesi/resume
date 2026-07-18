@@ -4,17 +4,17 @@ const fontUrl = (fileName: string) =>
   new URL(`../assets/fonts/${fileName}`, import.meta.url).href;
 
 Font.register({
-  family: "Times New Roman",
+  family: "Tinos",
   fonts: [
-    { src: fontUrl("Times New Roman.ttf"), fontWeight: 400 },
-    { src: fontUrl("Times New Roman Bold.ttf"), fontWeight: 700 },
+    { src: fontUrl("Tinos-Regular.ttf"), fontWeight: 400 },
+    { src: fontUrl("Tinos-Bold.ttf"), fontWeight: 700 },
     {
-      src: fontUrl("Times New Roman Italic.ttf"),
+      src: fontUrl("Tinos-Italic.ttf"),
       fontStyle: "italic",
       fontWeight: 400,
     },
     {
-      src: fontUrl("Times New Roman Bold Italic.ttf"),
+      src: fontUrl("Tinos-BoldItalic.ttf"),
       fontStyle: "italic",
       fontWeight: 700,
     },

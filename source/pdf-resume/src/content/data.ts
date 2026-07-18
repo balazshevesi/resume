@@ -106,7 +106,7 @@ export const resumeData: ResumeData = {
           title: "Linnaeus University",
           subtitle:
             "Bachelor of Science, Software Technology (Computer Science)",
-          location: "Växjo, Sweden",
+          location: "Växjö, Sweden",
           date: new Date("2027-06-01"),
           dateLabel: "Expected graduation",
           meta: ["GPA: 3.69 / 4.0"],
