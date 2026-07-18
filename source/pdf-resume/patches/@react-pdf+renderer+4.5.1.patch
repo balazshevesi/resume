@@ -1,0 +1,140 @@
+diff --git a/node_modules/@react-pdf/renderer/index.d.ts b/node_modules/@react-pdf/renderer/index.d.ts
+index 1aa2dc8..3459301 100644
+--- a/node_modules/@react-pdf/renderer/index.d.ts
++++ b/node_modules/@react-pdf/renderer/index.d.ts
+@@ -51,6 +51,7 @@ declare namespace ReactPDF {
+     keywords?: string;
+     producer?: string;
+     language?: string;
++    tagged?: boolean;
+     creationDate?: Date;
+     modificationDate?: Date;
+     pdfVersion?: PDFVersion;
+@@ -91,6 +92,7 @@ declare namespace ReactPDF {
+      * @see https://react-pdf.org/advanced#orphan-&-widow-protection
+      */
+     minPresenceAhead?: number;
++    role?: 'Document' | 'H1' | 'H2' | 'H3' | 'H4' | 'H5' | 'H6' | 'P' | 'L' | 'LI' | 'Lbl' | 'LBody' | 'Link';
+   }
+ 
+   interface PageProps extends NodeProps {
+diff --git a/node_modules/@react-pdf/renderer/lib/react-pdf.browser.d.ts b/node_modules/@react-pdf/renderer/lib/react-pdf.browser.d.ts
+index 1aa2dc8..3459301 100644
+--- a/node_modules/@react-pdf/renderer/lib/react-pdf.browser.d.ts
++++ b/node_modules/@react-pdf/renderer/lib/react-pdf.browser.d.ts
+@@ -51,6 +51,7 @@ declare namespace ReactPDF {
+     keywords?: string;
+     producer?: string;
+     language?: string;
++    tagged?: boolean;
+     creationDate?: Date;
+     modificationDate?: Date;
+     pdfVersion?: PDFVersion;
+@@ -91,6 +92,7 @@ declare namespace ReactPDF {
+      * @see https://react-pdf.org/advanced#orphan-&-widow-protection
+      */
+     minPresenceAhead?: number;
++    role?: 'Document' | 'H1' | 'H2' | 'H3' | 'H4' | 'H5' | 'H6' | 'P' | 'L' | 'LI' | 'Lbl' | 'LBody' | 'Link';
+   }
+ 
+   interface PageProps extends NodeProps {
+diff --git a/node_modules/@react-pdf/renderer/lib/react-pdf.browser.js b/node_modules/@react-pdf/renderer/lib/react-pdf.browser.js
+index 31c0edf..f343e94 100644
+--- a/node_modules/@react-pdf/renderer/lib/react-pdf.browser.js
++++ b/node_modules/@react-pdf/renderer/lib/react-pdf.browser.js
+@@ -141,6 +141,7 @@ const pdf = initialValue => {
+     const {
+       pdfVersion,
+       language,
++      tagged,
+       pageLayout,
+       pageMode,
+       title,
+@@ -159,6 +160,7 @@ const pdf = initialValue => {
+       compress,
+       pdfVersion,
+       lang: language,
++      tagged,
+       displayTitle: true,
+       autoFirstPage: false,
+       ownerPassword,
+diff --git a/node_modules/@react-pdf/renderer/lib/react-pdf.browser.min.d.ts b/node_modules/@react-pdf/renderer/lib/react-pdf.browser.min.d.ts
+index 1aa2dc8..3459301 100644
+--- a/node_modules/@react-pdf/renderer/lib/react-pdf.browser.min.d.ts
++++ b/node_modules/@react-pdf/renderer/lib/react-pdf.browser.min.d.ts
+@@ -51,6 +51,7 @@ declare namespace ReactPDF {
+     keywords?: string;
+     producer?: string;
+     language?: string;
++    tagged?: boolean;
+     creationDate?: Date;
+     modificationDate?: Date;
+     pdfVersion?: PDFVersion;
+@@ -91,6 +92,7 @@ declare namespace ReactPDF {
+      * @see https://react-pdf.org/advanced#orphan-&-widow-protection
+      */
+     minPresenceAhead?: number;
++    role?: 'Document' | 'H1' | 'H2' | 'H3' | 'H4' | 'H5' | 'H6' | 'P' | 'L' | 'LI' | 'Lbl' | 'LBody' | 'Link';
+   }
+ 
+   interface PageProps extends NodeProps {
+diff --git a/node_modules/@react-pdf/renderer/lib/react-pdf.d.ts b/node_modules/@react-pdf/renderer/lib/react-pdf.d.ts
+index 1aa2dc8..3459301 100644
+--- a/node_modules/@react-pdf/renderer/lib/react-pdf.d.ts
++++ b/node_modules/@react-pdf/renderer/lib/react-pdf.d.ts
+@@ -51,6 +51,7 @@ declare namespace ReactPDF {
+     keywords?: string;
+     producer?: string;
+     language?: string;
++    tagged?: boolean;
+     creationDate?: Date;
+     modificationDate?: Date;
+     pdfVersion?: PDFVersion;
+@@ -91,6 +92,7 @@ declare namespace ReactPDF {
+      * @see https://react-pdf.org/advanced#orphan-&-widow-protection
+      */
+     minPresenceAhead?: number;
++    role?: 'Document' | 'H1' | 'H2' | 'H3' | 'H4' | 'H5' | 'H6' | 'P' | 'L' | 'LI' | 'Lbl' | 'LBody' | 'Link';
+   }
+ 
+   interface PageProps extends NodeProps {
+diff --git a/node_modules/@react-pdf/renderer/lib/react-pdf.js b/node_modules/@react-pdf/renderer/lib/react-pdf.js
+index fa6f82d..2f83bfa 100644
+--- a/node_modules/@react-pdf/renderer/lib/react-pdf.js
++++ b/node_modules/@react-pdf/renderer/lib/react-pdf.js
+@@ -140,6 +140,7 @@ const pdf = initialValue => {
+     const {
+       pdfVersion,
+       language,
++      tagged,
+       pageLayout,
+       pageMode,
+       title,
+@@ -158,6 +159,7 @@ const pdf = initialValue => {
+       compress,
+       pdfVersion,
+       lang: language,
++      tagged,
+       displayTitle: true,
+       autoFirstPage: false,
+       ownerPassword,
+diff --git a/node_modules/@react-pdf/renderer/lib/react-pdf.min.d.ts b/node_modules/@react-pdf/renderer/lib/react-pdf.min.d.ts
+index 1aa2dc8..3459301 100644
+--- a/node_modules/@react-pdf/renderer/lib/react-pdf.min.d.ts
++++ b/node_modules/@react-pdf/renderer/lib/react-pdf.min.d.ts
+@@ -51,6 +51,7 @@ declare namespace ReactPDF {
+     keywords?: string;
+     producer?: string;
+     language?: string;
++    tagged?: boolean;
+     creationDate?: Date;
+     modificationDate?: Date;
+     pdfVersion?: PDFVersion;
+@@ -91,6 +92,7 @@ declare namespace ReactPDF {
+      * @see https://react-pdf.org/advanced#orphan-&-widow-protection
+      */
+     minPresenceAhead?: number;
++    role?: 'Document' | 'H1' | 'H2' | 'H3' | 'H4' | 'H5' | 'H6' | 'P' | 'L' | 'LI' | 'Lbl' | 'LBody' | 'Link';
+   }
+ 
+   interface PageProps extends NodeProps {

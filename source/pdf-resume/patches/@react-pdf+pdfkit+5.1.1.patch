@@ -1,0 +1,150 @@
+diff --git a/node_modules/@react-pdf/pdfkit/lib/pdfkit.browser.js b/node_modules/@react-pdf/pdfkit/lib/pdfkit.browser.js
+index 6751116..904a686 100644
+--- a/node_modules/@react-pdf/pdfkit/lib/pdfkit.browser.js
++++ b/node_modules/@react-pdf/pdfkit/lib/pdfkit.browser.js
+@@ -46887,6 +46887,13 @@ var ImagesMixin = {
+ 
+ var AnnotationsMixin = {
+   annotate(x, y, w, h, options) {
++    const structureElement = options.structureElement;
++    delete options.structureElement;
++    if (structureElement) {
++      const structParent = this.createStructParentTreeNextKey();
++      options.StructParent = structParent;
++      this.getStructParentTree().add(structParent, structureElement.dictionary);
++    }
+     options.Type = 'Annot';
+     options.Rect = this._convertRect(x, y, w, h);
+     options.Border = [0, 0, 0];
+@@ -46911,6 +46918,9 @@ var AnnotationsMixin = {
+     const ref = this.ref(options);
+     this.page.annotations.push(ref);
+     ref.end();
++    if (structureElement) {
++      structureElement.add(new PDFStructureObject(this.page.dictionary, ref));
++    }
+     return this;
+   },
+   note(x, y, w, h, contents, options) {
+@@ -47180,6 +47190,13 @@ class PDFStructureContent {
+   }
+ }
+ 
++class PDFStructureObject {
++  constructor(pageRef, objectRef) {
++    this.pageRef = pageRef;
++    this.objectRef = objectRef;
++  }
++}
++
+ /*
+ PDFStructureElement - represents an element in the PDF logical structure tree
+ By Ben Schmidt
+@@ -47294,7 +47311,7 @@ class PDFStructureElement {
+     this._flush();
+   }
+   _isValidChild(child) {
+-    return child instanceof PDFStructureElement || child instanceof PDFStructureContent || typeof child === 'function';
++    return child instanceof PDFStructureElement || child instanceof PDFStructureContent || child instanceof PDFStructureObject || typeof child === 'function';
+   }
+   _contentForClosure(closure) {
+     const content = this.document.markStructureContent(this.dictionary.data.S);
+@@ -47314,6 +47331,9 @@ class PDFStructureElement {
+       if (child instanceof PDFStructureElement) {
+         return child._isFlushable();
+       }
++      if (child instanceof PDFStructureObject) {
++        return true;
++      }
+       return true;
+     });
+   }
+@@ -47356,6 +47376,13 @@ class PDFStructureElement {
+         }
+       });
+     }
++    if (child instanceof PDFStructureObject) {
++      this.dictionary.data.K.push({
++        Type: 'OBJR',
++        Pg: child.pageRef,
++        Obj: child.objectRef,
++      });
++    }
+   }
+ }
+ 
+diff --git a/node_modules/@react-pdf/pdfkit/lib/pdfkit.js b/node_modules/@react-pdf/pdfkit/lib/pdfkit.js
+index 3619d74..da4339c 100644
+--- a/node_modules/@react-pdf/pdfkit/lib/pdfkit.js
++++ b/node_modules/@react-pdf/pdfkit/lib/pdfkit.js
+@@ -39172,6 +39172,13 @@ var ImagesMixin = {
+ 
+ var AnnotationsMixin = {
+   annotate(x, y, w, h, options) {
++    const structureElement = options.structureElement;
++    delete options.structureElement;
++    if (structureElement) {
++      const structParent = this.createStructParentTreeNextKey();
++      options.StructParent = structParent;
++      this.getStructParentTree().add(structParent, structureElement.dictionary);
++    }
+     options.Type = 'Annot';
+     options.Rect = this._convertRect(x, y, w, h);
+     options.Border = [0, 0, 0];
+@@ -39196,6 +39203,9 @@ var AnnotationsMixin = {
+     const ref = this.ref(options);
+     this.page.annotations.push(ref);
+     ref.end();
++    if (structureElement) {
++      structureElement.add(new PDFStructureObject(this.page.dictionary, ref));
++    }
+     return this;
+   },
+   note(x, y, w, h, contents, options) {
+@@ -39465,6 +39475,13 @@ class PDFStructureContent {
+   }
+ }
+ 
++class PDFStructureObject {
++  constructor(pageRef, objectRef) {
++    this.pageRef = pageRef;
++    this.objectRef = objectRef;
++  }
++}
++
+ /*
+ PDFStructureElement - represents an element in the PDF logical structure tree
+ By Ben Schmidt
+@@ -39579,7 +39596,7 @@ class PDFStructureElement {
+     this._flush();
+   }
+   _isValidChild(child) {
+-    return child instanceof PDFStructureElement || child instanceof PDFStructureContent || typeof child === 'function';
++    return child instanceof PDFStructureElement || child instanceof PDFStructureContent || child instanceof PDFStructureObject || typeof child === 'function';
+   }
+   _contentForClosure(closure) {
+     const content = this.document.markStructureContent(this.dictionary.data.S);
+@@ -39599,6 +39616,9 @@ class PDFStructureElement {
+       if (child instanceof PDFStructureElement) {
+         return child._isFlushable();
+       }
++      if (child instanceof PDFStructureObject) {
++        return true;
++      }
+       return true;
+     });
+   }
+@@ -39641,6 +39661,13 @@ class PDFStructureElement {
+         }
+       });
+     }
++    if (child instanceof PDFStructureObject) {
++      this.dictionary.data.K.push({
++        Type: 'OBJR',
++        Pg: child.pageRef,
++        Obj: child.objectRef,
++      });
++    }
+   }
+ }
+ 

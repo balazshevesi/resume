@@ -1,0 +1,132 @@
+diff --git a/node_modules/@react-pdf/render/lib/index.js b/node_modules/@react-pdf/render/lib/index.js
+index 028cf37..c54bc9d 100644
+--- a/node_modules/@react-pdf/render/lib/index.js
++++ b/node_modules/@react-pdf/render/lib/index.js
+@@ -1399,11 +1399,17 @@ const renderBlock = (ctx, block) => {
+         renderLine(ctx, line);
+     });
+ };
+-const renderText = (ctx, node) => {
++const renderText = (ctx, node, options) => {
+     if (!node.box)
+         return;
+     if (!node.lines)
+         return;
++    const role = node.props?.role || 'P';
++    const structure = options.structureParent && ctx.struct(role);
++    if (structure) {
++        options.structureParent.add(structure);
++    }
++    const content = structure && ctx.markStructureContent(role);
+     const { top, left } = node.box;
+     const blocks = [node.lines];
+     const paddingTop = node.box?.paddingTop || 0;
+@@ -1412,9 +1418,20 @@ const renderText = (ctx, node) => {
+     const offsetX = node.alignOffset || 0;
+     ctx.save();
+     ctx.translate(left + paddingLeft - offsetX, top + paddingTop - initialY);
+-    blocks.forEach((block) => {
+-        renderBlock(ctx, block);
+-    });
++    try {
++        blocks.forEach((block) => {
++            renderBlock(ctx, block);
++        });
++    }
++    finally {
++        if (content) {
++            ctx.endMarkedContent();
++        }
++        if (structure) {
++            structure.add(content);
++            structure.end();
++        }
++    }
+     ctx.restore();
+ };
+ 
+@@ -2224,7 +2241,7 @@ const renderBackground = (ctx, node) => {
+ 
+ const isString = (value) => typeof value === 'string';
+ const isSrcId = (value) => /^#.+/.test(value);
+-const renderLink = (ctx, node, src) => {
++const renderLink = (ctx, node, src, options) => {
+     if (!src || !node.box)
+         return;
+     const isId = isSrcId(src);
+@@ -2233,14 +2250,16 @@ const renderLink = (ctx, node, src) => {
+     const { top, left, width, height } = node.box;
+     const props = node.props || {};
+     const slop = resolveHitSlop('hitSlop' in props ? props.hitSlop : undefined);
+-    ctx[method](left - slop.left, top - slop.top, width + slop.left + slop.right, height + slop.top + slop.bottom, value);
++    ctx[method](left - slop.left, top - slop.top, width + slop.left + slop.right, height + slop.top + slop.bottom, value, {
++        structureElement: options.structureParent,
++    });
+ };
+-const setLink = (ctx, node) => {
++const setLink = (ctx, node, options) => {
+     const props = node.props || {};
+     if ('src' in props && isString(props.src))
+-        return renderLink(ctx, node, props.src);
++        return renderLink(ctx, node, props.src, options);
+     if ('href' in props && isString(props.href))
+-        return renderLink(ctx, node, props.href);
++        return renderLink(ctx, node, props.href, options);
+ };
+ 
+ const setDestination = (ctx, node) => {
+@@ -2442,6 +2461,14 @@ const cleanUpFns = {
+ const renderNode = (ctx, node, options) => {
+     const overflowHidden = node.style?.overflow === 'hidden';
+     const shouldRenderChildren = isRecursiveNode(node);
++    const role = node.type === P.Text ? undefined : node.props?.role;
++    const structure = role && options.structureParent && ctx.struct(role);
++    if (structure) {
++        options.structureParent.add(structure);
++    }
++    const childOptions = structure
++        ? { ...options, structureParent: structure }
++        : options;
+     if (node.type === P.Page)
+         renderPage(ctx, node);
+     ctx.save();
+@@ -2452,12 +2479,14 @@ const renderNode = (ctx, node, options) => {
+     renderBorders(ctx, node);
+     const renderFn = renderFns[node.type];
+     if (renderFn)
+-        renderFn(ctx, node, options);
++        renderFn(ctx, node, childOptions);
+     if (shouldRenderChildren)
+-        renderChildren(ctx, node, options);
++        renderChildren(ctx, node, childOptions);
+     const cleanUpFn = cleanUpFns[node.type];
+     if (cleanUpFn)
+-        cleanUpFn(ctx, node, options);
++        cleanUpFn(ctx, node, childOptions);
++    if (structure)
++        structure.end();
+     setDestination(ctx, node);
+     renderDebug(ctx, node);
+     ctx.restore();
+@@ -2498,9 +2527,20 @@ const addBookmarks = (ctx, root) => {
+ 
+ const render = (ctx, doc) => {
+     const pages = doc.children || [];
+-    const options = { imageCache: new Map(), fieldSets: [] };
++    const documentStructure = ctx._root.data.StructTreeRoot && ctx.struct('Document');
++    if (documentStructure) {
++        ctx.addStructure(documentStructure);
++    }
++    const options = {
++        imageCache: new Map(),
++        fieldSets: [],
++        structureParent: documentStructure,
++    };
+     pages.forEach((page) => renderNode(ctx, page, options));
+     addBookmarks(ctx, doc);
++    if (documentStructure) {
++        documentStructure.end();
++    }
+     ctx.end();
+     return ctx;
+ };

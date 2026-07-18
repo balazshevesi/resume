@@ -41,7 +41,7 @@ export const renderLinkedText = (text: string, src?: string, key?: string) => {
   }
 
   return (
-    <Link key={key} src={src} style={styles.link}>
+    <Link key={key} src={src} style={styles.link} role="Link">
       {text}
     </Link>
   );

@@ -15,8 +15,12 @@ export const ResumeHeader = ({ profile }: ResumeHeaderProps) => {
 
   return (
     <>
-      <Text style={styles.name}>{profile.name}</Text>
-      <Text style={styles.contactText}>{contacts}</Text>
+      <Text style={styles.name} role="H1">
+        {profile.name}
+      </Text>
+      <Text style={styles.contactText} role="P">
+        {contacts}
+      </Text>
     </>
   );
 };

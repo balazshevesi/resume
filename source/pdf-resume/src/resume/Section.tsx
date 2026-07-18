@@ -10,7 +10,9 @@ type ResumeSectionProps = {
 // Named resume section, such as education, projects, skills, or personal information.
 export const ResumeSection = ({ section }: ResumeSectionProps) => (
   <View style={styles.section}>
-    <Text style={styles.sectionTitle}>{section.title}</Text>
+    <Text style={styles.sectionTitle} role="H2">
+      {section.title}
+    </Text>
     {section.items.map((item, index) => (
       <ResumeItemView key={`${section.title}-${index}`} item={item} />
     ))}

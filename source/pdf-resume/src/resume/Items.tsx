@@ -44,11 +44,20 @@ const renderRichText = (text: RichText) => {
 
 // Bullet list content, usually used for achievements, responsibilities, or contribution summaries.
 const BulletList = ({ bullets }: { bullets: RichText[] }) => (
-  <View>
+  <View role="L">
     {bullets.map((bullet) => (
-      <View key={getBulletKey(bullet)} style={styles.bulletRow} wrap={false}>
-        <Text style={styles.bullet}>•</Text>
-        <Text style={styles.bulletText}>{renderRichText(bullet)}</Text>
+      <View
+        key={getBulletKey(bullet)}
+        style={styles.bulletRow}
+        wrap={false}
+        role="LI"
+      >
+        <Text style={styles.bullet} role="Lbl">
+          •
+        </Text>
+        <Text style={styles.bulletText} role="LBody">
+          {renderRichText(bullet)}
+        </Text>
       </View>
     ))}
   </View>
@@ -62,7 +71,9 @@ const Entry = ({ item }: { item: EntryItem }) => {
     <View style={styles.item}>
       <View style={styles.entryHeader}>
         <View style={styles.entryMain}>
-          <Text style={styles.entryTitle}>{item.title}</Text>
+          <Text style={styles.entryTitle} role="H3">
+            {item.title}
+          </Text>
           {item.location ? (
             <Text style={styles.entryText}>{item.location}</Text>
           ) : null}
@@ -93,7 +104,7 @@ const Entry = ({ item }: { item: EntryItem }) => {
         ) : null}
       </View>
       {item.subtitle ? (
-        <Text style={styles.subtitle}>
+        <Text style={styles.subtitle} role="P">
           {[item.subtitle, ...(item.meta ?? [])].join(", ")}
         </Text>
       ) : null}
@@ -113,14 +124,18 @@ export const ResumeItemView = ({ item }: { item: ResumeItem }) => {
       return (
         <View style={styles.inlineRow}>
           <Text style={styles.inlineLabel}>{item.label}: </Text>
-          <Text style={styles.inlineValues}>{item.skills.join(", ")}</Text>
+          <Text style={styles.inlineValues} role="P">
+            {item.skills.join(", ")}
+          </Text>
         </View>
       );
     case "inline-list":
       return (
         <View style={styles.inlineRow}>
           <Text style={styles.inlineLabel}>{item.label}: </Text>
-          <Text style={styles.inlineValues}>{item.values.join(", ")}</Text>
+          <Text style={styles.inlineValues} role="P">
+            {item.values.join(", ")}
+          </Text>
         </View>
       );
   }
