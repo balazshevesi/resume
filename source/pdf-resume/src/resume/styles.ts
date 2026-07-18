@@ -9,8 +9,8 @@ export const styles = StyleSheet.create({
     paddingVertical: 26,
     color: ink,
     fontFamily: "Times-Roman",
-    fontSize: 9.55,
-    lineHeight: 1.1,
+    fontSize: 10,
+    lineHeight: 1.16,
   },
   header: {
     alignItems: "center",
@@ -19,7 +19,7 @@ export const styles = StyleSheet.create({
   name: {
     color: ink,
     fontFamily: "Times-Bold",
-    fontSize: 25,
+    fontSize: 24,
     lineHeight: 1,
     marginBottom: 7,
   },
@@ -31,8 +31,8 @@ export const styles = StyleSheet.create({
   },
   contactText: {
     color: ink,
-    fontSize: 10.2,
-    lineHeight: 1,
+    fontSize: 10.4,
+    lineHeight: 1.1,
   },
   link: {
     color: ink,
@@ -45,9 +45,9 @@ export const styles = StyleSheet.create({
     borderBottomColor: rule,
     borderBottomWidth: 1,
     color: ink,
-    fontSize: 12.2,
+    fontSize: 12,
     letterSpacing: 0.2,
-    lineHeight: 1,
+    lineHeight: 1.1,
     marginBottom: 4,
     paddingBottom: 1,
     textTransform: "uppercase",
@@ -71,11 +71,11 @@ export const styles = StyleSheet.create({
   entryTitle: {
     fontFamily: "Times-Bold",
     fontSize: 10.8,
-    lineHeight: 1.05,
+    lineHeight: 1.12,
   },
   entryText: {
     fontSize: 10.8,
-    lineHeight: 1.05,
+    lineHeight: 1.12,
   },
   entrySide: {
     alignItems: "flex-end",
@@ -86,20 +86,20 @@ export const styles = StyleSheet.create({
   subtitle: {
     color: ink,
     fontSize: 10.45,
-    lineHeight: 1.05,
+    lineHeight: 1.12,
     marginBottom: 1,
   },
   meta: {
     color: ink,
     fontFamily: "Times-Bold",
     fontSize: 10.4,
-    lineHeight: 1.05,
+    lineHeight: 1.12,
   },
   tech: {
     color: ink,
     fontFamily: "Times-Italic",
     fontSize: 10.5,
-    lineHeight: 1.05,
+    lineHeight: 1.12,
   },
   links: {
     flexDirection: "row",
@@ -115,13 +115,13 @@ export const styles = StyleSheet.create({
   bullet: {
     color: ink,
     fontSize: 10.8,
-    lineHeight: 1.05,
+    lineHeight: 1.12,
     width: 5,
   },
   bulletText: {
     flex: 1,
-    fontSize: 9.9,
-    lineHeight: 1.1,
+    fontSize: 10.2,
+    lineHeight: 1.16,
   },
   inlineRow: {
     flexDirection: "row",
@@ -139,11 +139,11 @@ export const styles = StyleSheet.create({
   inlineLabel: {
     fontFamily: "Times-Bold",
     fontSize: 10.6,
-    lineHeight: 1.05,
+    lineHeight: 1.12,
   },
   inlineValues: {
     flex: 1,
     fontSize: 10.6,
-    lineHeight: 1.05,
+    lineHeight: 1.12,
   },
 });
