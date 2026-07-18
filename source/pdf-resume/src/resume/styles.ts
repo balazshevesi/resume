@@ -39,12 +39,13 @@ export const styles = StyleSheet.create({
     textDecoration: "underline",
   },
   section: {
-    marginTop: 5,
+    marginTop: 4,
   },
   sectionTitle: {
     borderBottomColor: rule,
     borderBottomWidth: 1,
     color: ink,
+    fontFamily: "Times-Bold",
     fontSize: 12,
     letterSpacing: 0.2,
     lineHeight: 1.1,
@@ -53,7 +54,8 @@ export const styles = StyleSheet.create({
     textTransform: "uppercase",
   },
   item: {
-    marginBottom: 3,
+    marginBottom: 2,
+    marginLeft: 10,
   },
   entryHeader: {
     flexDirection: "row",
@@ -76,6 +78,7 @@ export const styles = StyleSheet.create({
   entryText: {
     fontSize: 10.8,
     lineHeight: 1.12,
+    marginLeft: 5.5,
   },
   entrySide: {
     alignItems: "flex-end",
@@ -95,11 +98,28 @@ export const styles = StyleSheet.create({
     fontSize: 10.4,
     lineHeight: 1.12,
   },
+  metaDate: {
+    flexDirection: "row",
+  },
+  metaLabel: {
+    color: ink,
+    fontFamily: "Times-Roman",
+    fontSize: 10.4,
+    lineHeight: 1.12,
+  },
+  metaValue: {
+    color: ink,
+    fontFamily: "Times-Bold",
+    fontSize: 10.4,
+    lineHeight: 1.12,
+    marginLeft: 2,
+  },
   tech: {
     color: ink,
     fontFamily: "Times-Italic",
     fontSize: 10.5,
     lineHeight: 1.12,
+    marginLeft: 5.5,
   },
   links: {
     flexDirection: "row",
@@ -109,7 +129,7 @@ export const styles = StyleSheet.create({
   bulletRow: {
     flexDirection: "row",
     gap: 6,
-    marginTop: 2,
+    marginTop: 1.5,
     paddingLeft: 14,
   },
   bullet: {
@@ -123,18 +143,22 @@ export const styles = StyleSheet.create({
     fontSize: 10.2,
     lineHeight: 1.16,
   },
+  bulletTextRegular: {
+    fontFamily: "Times-Roman",
+  },
+  bulletTextBold: {
+    fontFamily: "Times-Bold",
+  },
+  bulletTextItalic: {
+    fontFamily: "Times-Italic",
+  },
+  bulletTextBoldItalic: {
+    fontFamily: "Times-BoldItalic",
+  },
   inlineRow: {
     flexDirection: "row",
-    marginBottom: 2,
-  },
-  inlineGrid: {
-    flexDirection: "row",
-    flexWrap: "wrap",
-  },
-  inlineGridItem: {
-    flexDirection: "row",
-    marginBottom: 2,
-    width: "50%",
+    marginBottom: 1,
+    marginLeft: 10,
   },
   inlineLabel: {
     fontFamily: "Times-Bold",

@@ -4,15 +4,22 @@ import { styles } from "./styles";
 
 export const formatEntryDate = (entry: EntryItem) => {
   if (entry.dateLabel && entry.date) {
-    return `${entry.dateLabel}: ${formatMonthYear(entry.date)}`;
+    return {
+      label: `${entry.dateLabel}:`,
+      date: formatMonthYear(entry.date),
+    };
   }
 
   if (entry.date && entry.endDate) {
-    return `${formatMonthYear(entry.date)} - ${formatMonthYear(entry.endDate)}`;
+    return {
+      date: `${formatMonthYear(entry.date)} - ${formatMonthYear(entry.endDate)}`,
+    };
   }
 
   if (entry.date) {
-    return formatMonthYear(entry.date);
+    return {
+      date: formatMonthYear(entry.date),
+    };
   }
 
   return undefined;

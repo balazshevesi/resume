@@ -20,7 +20,19 @@ export type ResumeSection = {
   items: ResumeItem[];
 };
 
-export type ResumeItem = EntryItem | BulletListItem | SkillGroupItem | InlineListItem;
+export type ResumeItem =
+  | EntryItem
+  | BulletListItem
+  | SkillGroupItem
+  | InlineListItem;
+
+export type RichTextSegment = {
+  text: string;
+  bold?: boolean;
+  italic?: boolean;
+};
+
+export type RichText = string | Array<string | RichTextSegment>;
 
 export type EntryItem = {
   type: "entry";
@@ -36,12 +48,12 @@ export type EntryItem = {
     label: string;
     url?: string;
   }>;
-  bullets?: string[];
+  bullets?: RichText[];
 };
 
 export type BulletListItem = {
   type: "bullet-list";
-  bullets: string[];
+  bullets: RichText[];
 };
 
 export type SkillGroupItem = {
@@ -90,20 +102,29 @@ export const resumeData: ResumeData = {
         {
           type: "entry",
           title: "Linnaeus University",
-          subtitle: "Bachelor of Science, Software Technology (Computer Science)",
+          subtitle:
+            "Bachelor of Science, Software Technology (Computer Science)",
           location: "Vaxjo, Sweden",
           date: new Date("2027-06-01"),
           dateLabel: "Expected graduation",
           meta: ["GPA: 3.69 / 4.0"],
           bullets: [
-            "Relevant Coursework: Advanced Data Structures and Algorithms, Software Design and Architecture, Operating Systems, Computer Networks, Database Technology, Introduction to Machine Learning, Software Testing.",
-            `AI Society - Vice President, R&D Lead Developer: Led the development of a RAG-enabled AI-Chatbot ${technologies.react} project and actively competed in technical hackathons.`,
+            [
+              { text: "Relevant Coursework: ", bold: true },
+              "Advanced Data Structures and Algorithms, Software Design and Architecture, Operating Systems, Computer Networks, Database Technology, Introduction to Machine Learning, Software Testing.",
+            ],
+            [
+              {
+                text: "AI Society - Vice President, R&D Lead Developer: ",
+                bold: true,
+              },
+              `Led the development of a RAG-enabled AI-Chatbot ${technologies.react} project and actively competed in technical hackathons.`,
+            ],
           ],
         },
         {
           type: "entry",
-          title: "The Odin Project",
-          subtitle: "Full Stack JavaScript",
+          title: "The Odin Project (Full Stack JavaScript)",
           location: "Online",
           date: new Date("2023-07-01"),
         },
@@ -115,12 +136,21 @@ export const resumeData: ResumeData = {
         {
           type: "entry",
           title: "Clarus Visa Migration Assistant",
-          technologies: [technologies.react, technologies.tailwind, technologies.convex, technologies.vercelAiSdk],
+          technologies: [
+            technologies.react,
+            technologies.tailwind,
+            technologies.convex,
+            technologies.vercelAiSdk,
+          ],
           date: new Date("2026-03-01"),
           links: [
             {
               label: "Code",
               url: "https://github.com/balazshevesi/clarus-visa-migration-assistant",
+            },
+            {
+              label: "SVT",
+              url: "https://www.svt.se/nyheter/lokalt/smaland/lnu-studenter-utvecklar-egen-ai-bot-ska-hjalpa-folk-fran-utlandet-med-visum",
             },
           ],
           bullets: [
@@ -273,11 +303,6 @@ export const resumeData: ResumeData = {
     {
       title: "Other + Personal Interests",
       items: [
-        {
-          type: "inline-list",
-          label: "Certificates",
-          values: ["AM+B Swedish Drivers License", "Forklift License"],
-        },
         {
           type: "inline-list",
           label: "Citizenships",

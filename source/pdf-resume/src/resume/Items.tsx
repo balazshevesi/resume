@@ -1,15 +1,54 @@
 import { Text, View } from "@react-pdf/renderer";
-import type { EntryItem, ResumeItem } from "../content/data";
+import type { EntryItem, ResumeItem, RichText } from "../content/data";
 import { formatEntryDate, renderLinkedText } from "./format";
 import { styles } from "./styles";
 
+const getBulletKey = (bullet: RichText) =>
+  typeof bullet === "string"
+    ? bullet
+    : bullet
+        .map((segment) =>
+          typeof segment === "string" ? segment : segment.text,
+        )
+        .join("");
+
+const renderRichText = (text: RichText) => {
+  if (typeof text === "string") {
+    return text;
+  }
+
+  return text.map((segment, index) => {
+    if (typeof segment === "string") {
+      return (
+        <Text key={`${segment}-${index}`} style={styles.bulletTextRegular}>
+          {segment}
+        </Text>
+      );
+    }
+
+    const style = segment.bold
+      ? segment.italic
+        ? styles.bulletTextBoldItalic
+        : styles.bulletTextBold
+      : segment.italic
+        ? styles.bulletTextItalic
+        : styles.bulletTextRegular;
+
+    return (
+      <Text key={`${segment.text}-${index}`} style={style}>
+        {segment.text}
+      </Text>
+    );
+  });
+};
+
 // Bullet list content, usually used for achievements, responsibilities, or contribution summaries.
-const BulletList = ({ bullets }: { bullets: string[] }) => (
+const BulletList = ({ bullets }: { bullets: RichText[] }) => (
   <View>
     {bullets.map((bullet) => (
-      <View key={bullet} style={styles.bulletRow} wrap={false}>
+      <View key={getBulletKey(bullet)} style={styles.bulletRow} wrap={false}>
         <Text style={styles.bullet}>•</Text>
-        <Text style={styles.bulletText}>{bullet}</Text>
+        <Text style={styles.bulletText}>{renderRichText(bullet)}</Text>
       </View>
     ))}
   </View>
@@ -25,10 +64,10 @@ const Entry = ({ item }: { item: EntryItem }) => {
         <View style={styles.entryMain}>
           <Text style={styles.entryTitle}>{item.title}</Text>
           {item.location ? (
-            <Text style={styles.entryText}> - {item.location}</Text>
+            <Text style={styles.entryText}>{item.location}</Text>
           ) : null}
           {item.technologies ? (
-            <Text style={styles.tech}> ({item.technologies.join(", ")})</Text>
+            <Text style={styles.tech}>({item.technologies.join(", ")})</Text>
           ) : null}
         </View>
         {date || item.links ? (
@@ -40,7 +79,16 @@ const Entry = ({ item }: { item: EntryItem }) => {
                 )}
               </View>
             ) : null}
-            {date ? <Text style={styles.meta}>{date}</Text> : null}
+            {date ? (
+              <View style={styles.metaDate}>
+                {date.label ? (
+                  <Text style={styles.metaLabel}>{date.label}</Text>
+                ) : null}
+                <Text style={date.label ? styles.metaValue : styles.meta}>
+                  {date.date}
+                </Text>
+              </View>
+            ) : null}
           </View>
         ) : null}
       </View>
@@ -76,17 +124,4 @@ export const ResumeItemView = ({ item }: { item: ResumeItem }) => {
         </View>
       );
   }
-};
-
-export const InlineGridItemView = ({ item }: { item: ResumeItem }) => {
-  if (item.type !== "inline-list") {
-    return <ResumeItemView item={item} />;
-  }
-
-  return (
-    <View style={styles.inlineGridItem}>
-      <Text style={styles.inlineLabel}>{item.label}: </Text>
-      <Text style={styles.inlineValues}>{item.values.join(", ")}</Text>
-    </View>
-  );
 };
