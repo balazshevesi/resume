@@ -1,7 +1,7 @@
 import { Text, View } from "@react-pdf/renderer";
 import type { ResumeSection as ResumeSectionData } from "../content/data";
-import { InlineGridItemView, ResumeItemView } from "./ResumeItems";
-import { styles } from "./resumeStyles";
+import { InlineGridItemView, ResumeItemView } from "./Items";
+import { styles } from "./styles";
 
 type ResumeSectionProps = {
   section: ResumeSectionData;

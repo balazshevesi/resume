@@ -1,7 +1,7 @@
 import { Text, View } from "@react-pdf/renderer";
 import type { ResumeData } from "../content/data";
-import { renderLinkedText } from "./resumeFormat";
-import { styles } from "./resumeStyles";
+import { renderLinkedText } from "./format";
+import { styles } from "./styles";
 
 type ResumeHeaderProps = {
   profile: ResumeData["profile"];

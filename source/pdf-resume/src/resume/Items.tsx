@@ -1,7 +1,7 @@
 import { Text, View } from "@react-pdf/renderer";
 import type { EntryItem, ResumeItem } from "../content/data";
-import { formatEntryDate, renderLinkedText } from "./resumeFormat";
-import { styles } from "./resumeStyles";
+import { formatEntryDate, renderLinkedText } from "./format";
+import { styles } from "./styles";
 
 // Bullet list content, usually used for achievements, responsibilities, or contribution summaries.
 const BulletList = ({ bullets }: { bullets: string[] }) => (

@@ -1,6 +1,6 @@
 import { Link, Text } from "@react-pdf/renderer";
 import type { EntryItem } from "../content/data";
-import { styles } from "./resumeStyles";
+import { styles } from "./styles";
 
 export const formatEntryDate = (entry: EntryItem) => {
   if (entry.dateLabel && entry.date) {

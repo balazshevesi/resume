@@ -1,8 +1,8 @@
 import { Document, Page } from "@react-pdf/renderer";
 import { resumeData } from "../content/data";
-import { ResumeHeader } from "./ResumeHeader";
-import { ResumeSection } from "./ResumeSection";
-import { styles } from "./resumeStyles";
+import { ResumeHeader } from "./Header";
+import { ResumeSection } from "./Section";
+import { styles } from "./styles";
 
 // Full resume PDF document, composed from the profile header and each resume section.
 export const Resume = () => (
