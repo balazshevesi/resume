@@ -1,4 +1,4 @@
-import { Text } from "@react-pdf/renderer";
+import { Link, Text } from "@react-pdf/renderer";
 import type { ResumeData } from "../content/data";
 import { styles } from "./styles";
 
@@ -7,19 +7,30 @@ type ResumeHeaderProps = {
 };
 
 export const ResumeHeader = ({ profile }: ResumeHeaderProps) => {
-  const contacts = profile.contacts
-    .map((contact) =>
-      [contact.countryCode, contact.value].filter(Boolean).join(" "),
-    )
-    .join(" | ");
-
   return (
     <>
       <Text style={styles.name} role="H1">
         {profile.name}
       </Text>
       <Text style={styles.contactText} role="P">
-        {contacts}
+        {profile.contacts.map((contact, index) => {
+          const text = [contact.countryCode, contact.value]
+            .filter(Boolean)
+            .join(" ");
+
+          return (
+            <Text key={contact.label}>
+              {contact.href ? (
+                <Link src={contact.href} style={styles.link} role="Link">
+                  {text}
+                </Link>
+              ) : (
+                text
+              )}
+              {index < profile.contacts.length - 1 ? " | " : null}
+            </Text>
+          );
+        })}
       </Text>
     </>
   );
