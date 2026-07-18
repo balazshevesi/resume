@@ -20,7 +20,7 @@ export const formatEntryDate = (entry: EntryItem) => {
 
 const formatMonthYear = (date: Date) =>
   date.toLocaleDateString("en-US", {
-    month: "short",
+    month: "long",
     year: "numeric",
   });
 

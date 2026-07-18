@@ -19,7 +19,7 @@ export const ResumeHeader = ({ profile }: ResumeHeaderProps) => (
 
         return (
           <Text key={contact.label} style={styles.contactText}>
-            {contact.label}: {renderLinkedText(value, contact.href)}
+            {renderLinkedText(value, contact.href)}
           </Text>
         );
       })}

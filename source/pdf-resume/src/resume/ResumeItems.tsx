@@ -18,38 +18,37 @@ const BulletList = ({ bullets }: { bullets: string[] }) => (
 // Detailed resume entry, usually representing a school, project, job, or similar dated experience.
 const Entry = ({ item }: { item: EntryItem }) => {
   const date = formatEntryDate(item);
-  const sideMeta = [item.location, date].filter(Boolean).join(" | ");
 
   return (
     <View style={styles.item} wrap={false}>
       <View style={styles.entryHeader}>
         <View style={styles.entryMain}>
           <Text style={styles.entryTitle}>{item.title}</Text>
-          {item.subtitle ? (
-            <Text style={styles.subtitle}>{item.subtitle}</Text>
+          {item.location ? (
+            <Text style={styles.entryText}> - {item.location}</Text>
           ) : null}
           {item.technologies ? (
-            <Text style={styles.tech}>{item.technologies.join(" | ")}</Text>
-          ) : null}
-          {item.links ? (
-            <View style={styles.links}>
-              {item.links.map((link) =>
-                renderLinkedText(link.label, link.url, link.label),
-              )}
-            </View>
+            <Text style={styles.tech}> ({item.technologies.join(", ")})</Text>
           ) : null}
         </View>
-        {sideMeta ? (
+        {date || item.links ? (
           <View style={styles.entrySide}>
-            <Text style={styles.meta}>{sideMeta}</Text>
-            {item.meta?.map((meta) => (
-              <Text key={meta} style={styles.meta}>
-                {meta}
-              </Text>
-            ))}
+            {item.links ? (
+              <View style={styles.links}>
+                {item.links.map((link) =>
+                  renderLinkedText(link.label, link.url, link.label),
+                )}
+              </View>
+            ) : null}
+            {date ? <Text style={styles.meta}>{date}</Text> : null}
           </View>
         ) : null}
       </View>
+      {item.subtitle ? (
+        <Text style={styles.subtitle}>
+          {[item.subtitle, ...(item.meta ?? [])].join(", ")}
+        </Text>
+      ) : null}
       {item.bullets ? <BulletList bullets={item.bullets} /> : null}
     </View>
   );
@@ -65,14 +64,14 @@ export const ResumeItemView = ({ item }: { item: ResumeItem }) => {
     case "skill-group":
       return (
         <View style={styles.inlineRow}>
-          <Text style={styles.inlineLabel}>{item.label}</Text>
+          <Text style={styles.inlineLabel}>{item.label}: </Text>
           <Text style={styles.inlineValues}>{item.skills.join(" | ")}</Text>
         </View>
       );
     case "inline-list":
       return (
         <View style={styles.inlineRow}>
-          <Text style={styles.inlineLabel}>{item.label}</Text>
+          <Text style={styles.inlineLabel}>{item.label}: </Text>
           <Text style={styles.inlineValues}>{item.values.join(" | ")}</Text>
         </View>
       );
