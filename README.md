@@ -13,8 +13,8 @@ bun install
 bun run build
 ```
 
-Use `bun run dev` to preview the resume in the browser. Generate the final PDF
-with:
+Use `bun run dev` to preview the resume in the browser. The preview reloads
+automatically when you edit the source. Generate the final PDF with:
 
 ```sh
 bun run generate-pdf
@@ -47,4 +47,3 @@ This project is inspired by this blog post: https://wkaisertexas.github.io/blog/
 
 - [ ] Consider re-witting the contents, set the "ai society" as experience
 - [ ] Tune the ATS properly, probably setup tests and stuff
-- [ ] Figure out a way to do live-reloading of the pdfs

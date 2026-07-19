@@ -3,6 +3,10 @@ import { PDFViewer } from "@react-pdf/renderer";
 import { Resume } from "./pdf/Resume";
 import "./index.css";
 
+if (import.meta.hot) {
+  import.meta.hot.on("vite:afterUpdate", () => window.location.reload());
+}
+
 createRoot(document.getElementById("root")!).render(
   <PDFViewer style={{ width: "100%", height: "100dvh", border: 0 }}>
     <Resume />
