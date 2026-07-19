@@ -75,7 +75,7 @@ export const resumeData: ResumeData = {
     fileName: "balazs_hevesi_software_engineering_resume",
     name: "Balazs Hevesi",
     headline:
-      "Software Engineering Student | Full-Stack, TypeScript and AI Development",
+      "Software Engineering Student | Frontend, TypeScript and AI Development",
     contacts: [
       {
         label: "Phone",
@@ -112,7 +112,7 @@ export const resumeData: ResumeData = {
           location: "Växjö, Sweden",
           date: new Date("2027-06-01"),
           dateLabel: "Expected graduation",
-          meta: ["GPA: 3.69 / 4.0"],
+          meta: ["GPA: 3.51 / 4.0"],
           bullets: [
             [
               { text: "Relevant Coursework: ", bold: true },
@@ -137,7 +137,7 @@ export const resumeData: ResumeData = {
           subtitle: "Vice President & R&D Lead Developer",
           location: "Växjö, Sweden",
           dateLabel: "Since",
-          date: new Date("2025-01-01"),
+          date: new Date("2026-03-01"),
           bullets: [
             "Led development of a RAG-enabled AI chatbot project that helps non-Swedish speakers navigate Swedish visa migration.",
             "Coordinated technical direction and delivered an MVP under strict deadline, demonstrated on Swedish national television.",
@@ -146,7 +146,7 @@ export const resumeData: ResumeData = {
       ],
     },
     {
-      title: "Technical Projects",
+      title: "Projects",
       items: [
         {
           type: "entry",
@@ -191,7 +191,7 @@ export const resumeData: ResumeData = {
             },
           ],
           bullets: [
-            `Architected a full-stack IoT pipeline using ${technologies.microPython} on Raspberry Pi Pico WH to sample temperature, humidity, light intensity, and soil moisture every second, then publish via ${technologies.mqtt} to ${technologies.adafruitIo}.`,
+            `Built a full-stack IoT pipeline using ${technologies.microPython} on Raspberry Pi Pico WH to sample temperature, humidity, light intensity, and soil moisture every second, then publish via ${technologies.mqtt} to ${technologies.adafruitIo}.`,
             `Containerized ${technologies.telegraf}, ${technologies.influxDb}, and ${technologies.grafana} with ${technologies.dockerCompose}, enabling one-click deployment, reducing manual setup steps from 12 to a single command.`,
             `Designed a reusable sensor-abstraction layer in ${technologies.microPython}, defining a Sensor superclass to reduce code duplication by roughly 40% and simplify the addition of new sensor types.`,
           ],
@@ -215,7 +215,7 @@ export const resumeData: ResumeData = {
             },
           ],
           bullets: [
-            "Collaborated in a five-person Scrum team, running weekly sprints, daily stand-ups, sprint planning and retrospectives, delivering a fully functional MVP in five sprints, meeting 100% of client requirements.",
+            "Collaborated in a five-person Scrum team, running weekly sprints, daily stand-ups, sprint planning and retrospectives, incorporating client feedback to deliver a fully functional MVP in five sprints, meeting 100% of client requirements.",
             `Developed a ${technologies.javaFx} frontend (${technologies.fxml} + ${technologies.css}) featuring feed toggles, settings screen, theme switching, AI summary views and local ${technologies.sqlite} caching for offline reading, improving first-load time by an estimated 60%.`,
           ],
         },
@@ -237,18 +237,18 @@ export const resumeData: ResumeData = {
             },
             {
               label: "Live",
-              url: "https://nar-slutar-lektionen.net",
+              url: "https://www.xn--nr-slutar-lektionen-gwb.net/",
             },
           ],
           bullets: [
-            "Reverse-engineered and documented Skola24's private API by intercepting and analyzing client requests to reconstruct its signature-generation and five-step handshake protocol without documentation, giving programmatic access to timetables.",
+            "Reverse-engineered and documented Skola24's private API by intercepting and analyzing client requests to reconstruct its signature-generation and five-step handshake protocol without documentation, unlocking programmatic access to timetables.",
             `Crafted a responsive user interface using ${technologies.next}, ${technologies.reactServerComponents}, and ${technologies.tailwind}, achieving an average Lighthouse score of 99 across all categories and reducing the number of clicks to access school schedules from 11 to 2 clicks.`,
           ],
         },
       ],
     },
     {
-      title: "Open Source Contributions",
+      title: "Open Source",
       items: [
         {
           type: "bullet-list",
@@ -287,10 +287,10 @@ export const resumeData: ResumeData = {
             technologies.node,
             technologies.zod,
             technologies.express,
-            technologies.hono,
+            // technologies.hono,
             technologies.vitest,
             technologies.drizzleOrm,
-            technologies.convex,
+            // technologies.convex,
           ],
         },
         {
@@ -333,8 +333,22 @@ export const resumeData: ResumeData = {
         },
         {
           type: "inline-list",
+          label: "Availability",
+          values: [
+            "Open to relocate",
+            "Able to work hybrid",
+            "Able to work full time after July 2027",
+          ],
+        },
+        {
+          type: "inline-list",
           label: "Languages",
-          values: ["English", "Swedish", "Hungarian", "German (beginner)"],
+          values: [
+            "English (fluent)",
+            "Swedish (fluent)",
+            "Hungarian (fluent)",
+            "German (beginner)",
+          ],
         },
       ],
     },

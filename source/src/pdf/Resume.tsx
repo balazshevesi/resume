@@ -11,7 +11,7 @@ export const Resume = () => (
     title={`${resumeData.profile.fileName}`}
     author={resumeData.profile.name}
     subject="Software engineering resume"
-    description="Software engineering resume for Balazs Hevesi"
+    description="Resume for Balazs Hevesi, software engineering student focused on frontend engineering, TypeScript, React, AI applications, and full-stack project development. Comfortable working in fast-paced environments"
     language="en-US"
     pdfVersion="1.4"
     tagged
