@@ -29,12 +29,22 @@ export const formatEntryDate = (entry: EntryItem) => {
   return undefined;
 };
 
-const formatMonthYear = (date: Date) =>
-  date.toLocaleDateString("en-US", {
+const formatMonthYear = (date: Date) => {
+  const shiftedFromLocalFirstOfMonth =
+    date.getDate() === 1 && date.getUTCDate() > 20;
+  const monthDate = new Date(
+    Date.UTC(
+      shiftedFromLocalFirstOfMonth ? date.getFullYear() : date.getUTCFullYear(),
+      shiftedFromLocalFirstOfMonth ? date.getMonth() : date.getUTCMonth(),
+    ),
+  );
+
+  return monthDate.toLocaleDateString("en-US", {
     month: "long",
     timeZone: "UTC",
     year: "numeric",
   });
+};
 
 export const renderLinkedText = (text: string, src?: string, key?: string) => {
   if (!src) {

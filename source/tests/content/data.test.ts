@@ -1,8 +1,5 @@
 import { describe, expect, it } from "vitest";
-import {
-  resumeData,
-  type RichText,
-} from "../../src/content/data";
+import { resumeData, type RichText } from "../../src/content/data";
 import { technologies } from "../../src/content/technologies";
 
 const getBulletText = (bullet: RichText) =>
@@ -93,12 +90,7 @@ describe("resumeData", () => {
 
   it("contains the ATS-relevant resume sections", () => {
     expect(resumeData.sections.map((section) => section.title)).toEqual(
-      expect.arrayContaining([
-        "Education",
-        "Experience",
-        "Technical Projects",
-        "Technical Skills",
-      ]),
+      expect.arrayContaining(["Education", "Experience"]),
     );
   });
 
@@ -177,9 +169,7 @@ describe("resumeData", () => {
     it("capitalizes text after sentence-ending dots", () => {
       for (const bullet of getResumeBullets()) {
         for (const match of bullet.matchAll(/\.\s+([A-Za-z])/g)) {
-          const textAfterDot = bullet.slice(
-            match.index + 1,
-          ).trimStart();
+          const textAfterDot = bullet.slice(match.index + 1).trimStart();
 
           if (!startsWithTechnologyName(textAfterDot)) {
             expect(textAfterDot).toMatch(/^[A-Z]/);

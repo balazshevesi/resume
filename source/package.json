@@ -6,6 +6,7 @@
   "scripts": {
     "dev": "bun vite",
     "build": "bun run get-fonts && bun run tsc -b && bun run vite build",
+    "build:downloads": "bun run build && bun run generate-pdf && cp dist/balazs_hevesi_software_engineering_frontend_resume.pdf \"$HOME/Downloads/\"",
     "get-fonts": "bun scripts/get-fonts.ts",
     "generate-pdf": "bun scripts/generatePdf.tsx",
     "lint": "bun eslint .",

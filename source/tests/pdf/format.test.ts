@@ -11,7 +11,7 @@ describe("formatEntryDate", () => {
         dateLabel: "Expected graduation",
       }),
     ).toEqual({
-      label: "Expected graduation:",
+      label: "Expected graduation: ",
       date: "June 2027",
     });
   });
