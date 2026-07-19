@@ -11,6 +11,7 @@ export type ResumeData = {
   profile: {
     fileName: string;
     name: string;
+    headline: string;
     contacts: Contact[];
   };
   sections: ResumeSection[];
@@ -73,6 +74,8 @@ export const resumeData: ResumeData = {
   profile: {
     fileName: "balazs_hevesi_software_engineering_resume",
     name: "Balazs Hevesi",
+    headline:
+      "Software Engineering Student | Full-Stack, TypeScript and AI Development",
     contacts: [
       {
         label: "Phone",
@@ -113,7 +116,7 @@ export const resumeData: ResumeData = {
           bullets: [
             [
               { text: "Relevant Coursework: ", bold: true },
-              "Advanced Data Structures and Algorithms, Software Design and Architecture, Operating Systems, Computer Networks, Database Technology, Introduction to Machine Learning, Software Testing.",
+              "Data Structures and Algorithms, Operating Systems, Machine Learning, Software Testing.",
             ],
             [
               {
@@ -133,7 +136,7 @@ export const resumeData: ResumeData = {
       ],
     },
     {
-      title: "Projects",
+      title: "Technical Projects",
       items: [
         {
           type: "entry",
@@ -157,8 +160,8 @@ export const resumeData: ResumeData = {
           ],
           bullets: [
             `Architected a serverless ${technologies.react} SPA using ${technologies.tailwind} and ${technologies.convex}, integrating the ${technologies.vercelAiSdk} to build a RAG-based chatbot that simplifies the Swedish visa migration process for non-Swedish speakers.`,
-            "Engineered an AI translation and filtering layer for the RAG pipeline, reducing multilingual context bloat and cutting observed cross-language answer failures by an estimated 95%.",
-            "Led the technical execution as R&D Lead Developer, delivering a highly stable MVP under a strict deadline that was robust enough to be successfully demonstrated on Swedish national television (SVT).",
+            "Engineered an AI translation and filtering layer for the RAG pipeline, reducing multilingual context bloat and cutting observed cross-language answer failures by 95%.",
+            "Led the technical execution as R&D Lead Developer, delivering a stable MVP under an urgent two day deadline that was demonstrated on Swedish national television (SVT).",
           ],
         },
         {
@@ -231,7 +234,7 @@ export const resumeData: ResumeData = {
             },
           ],
           bullets: [
-            "Reverse-engineered and documented Skola24's private API by intercepting and analyzing encrypted client requests to reconstruct its proprietary signature-generation and five-step handshake protocol, unlocking programmatic access to school-year and timetable endpoints without access to official documentation.",
+            "Reverse-engineered and documented Skola24's private API by intercepting and analyzing client requests to reconstruct its signature-generation and five-step handshake protocol without documentation, giving programmatic access to timetables.",
             `Crafted a responsive user interface using ${technologies.next}, ${technologies.reactServerComponents}, and ${technologies.tailwind}, achieving an average Lighthouse score of 99 across all categories and reducing the number of clicks to access school schedules from 11 to 2 clicks.`,
             `Leveraged ${technologies.next} ${technologies.reactServerComponents} to call Skola24's API on the server-side, bypassing browser CORS restrictions.`,
           ],
@@ -287,8 +290,6 @@ export const resumeData: ResumeData = {
           type: "skill-group",
           label: "Tools & DevOps",
           skills: [
-            technologies.visualStudioCode,
-            technologies.zed,
             technologies.docker,
             technologies.npm,
             technologies.vite,
@@ -300,25 +301,32 @@ export const resumeData: ResumeData = {
             technologies.chromeDevTools,
           ],
         },
+        {
+          type: "skill-group",
+          label: "Concepts",
+          skills: [
+            "Data Structures and Algorithms",
+            "RAG",
+            "Agile/Scrum",
+            "CI/CD",
+            "Database Design",
+            "Software Architecture",
+          ],
+        },
       ],
     },
     {
-      title: "Other + Personal Interests",
+      title: "Additional Information",
       items: [
         {
           type: "inline-list",
-          label: "Citizenships",
-          values: ["Swedish", "Hungarian"],
-        },
-        {
-          type: "inline-list",
-          label: "Personal Interests",
-          values: ["Weight Lifting", "Muay Thai", "Music Production"],
+          label: "Work Authorization",
+          values: ["Sweden", "Hungary", "European Economic Area"],
         },
         {
           type: "inline-list",
           label: "Languages",
-          values: ["English", "Swedish", "German", "Hungarian"],
+          values: ["English", "Swedish", "Hungarian", "German (beginner)"],
         },
       ],
     },

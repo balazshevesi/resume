@@ -34,6 +34,13 @@ export const styles = StyleSheet.create({
     marginBottom: 4,
     textAlign: "center",
   },
+  headline: {
+    color: ink,
+    fontSize: fontSizes.contact,
+    lineHeight: 1.1,
+    marginBottom: 2,
+    textAlign: "center",
+  },
   contactText: {
     color: ink,
     fontSize: fontSizes.contact,
@@ -108,8 +115,11 @@ export const styles = StyleSheet.create({
     fontSize: fontSizes.meta,
     lineHeight: 1.12,
   },
-  metaDate: {
-    flexDirection: "row",
+  metaLine: {
+    color: ink,
+    fontSize: fontSizes.meta,
+    lineHeight: 1.12,
+    textAlign: "right",
   },
   metaLabel: {
     color: ink,
@@ -132,11 +142,6 @@ export const styles = StyleSheet.create({
     fontSize: fontSizes.tech,
     lineHeight: 1.12,
     marginLeft: 5.5,
-  },
-  links: {
-    flexDirection: "row",
-    flexWrap: "wrap",
-    gap: 6,
   },
   bulletRow: {
     flexDirection: "row",

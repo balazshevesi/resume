@@ -32,6 +32,9 @@ export const ResumeHeader = ({ profile }: ResumeHeaderProps) => {
           );
         })}
       </Text>
+      <Text style={styles.headline} role="P">
+        {profile.headline}
+      </Text>
     </>
   );
 };

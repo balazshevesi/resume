@@ -83,23 +83,23 @@ const Entry = ({ item }: { item: EntryItem }) => {
         </View>
         {date || item.links ? (
           <View style={styles.entrySide}>
-            {item.links ? (
-              <View style={styles.links}>
-                {item.links.map((link) =>
-                  renderLinkedText(link.label, link.url, link.label),
-                )}
-              </View>
-            ) : null}
-            {date ? (
-              <View style={styles.metaDate}>
-                {date.label ? (
-                  <Text style={styles.metaLabel}>{date.label}</Text>
-                ) : null}
+            <Text style={styles.metaLine}>
+              {item.links?.map((link, index) => (
+                <Text key={link.label}>
+                  {index > 0 ? " | " : null}
+                  {renderLinkedText(link.label, link.url, link.label)}
+                </Text>
+              ))}
+              {item.links && date ? " | " : null}
+              {date?.label ? (
+                <Text style={styles.metaLabel}>{date.label}</Text>
+              ) : null}
+              {date ? (
                 <Text style={date.label ? styles.metaValue : styles.meta}>
                   {date.date}
                 </Text>
-              </View>
-            ) : null}
+              ) : null}
+            </Text>
           </View>
         ) : null}
       </View>
