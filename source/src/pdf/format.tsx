@@ -3,6 +3,10 @@ import type { EntryItem } from "../content/data";
 import { styles } from "./styles";
 
 export const formatEntryDate = (entry: EntryItem) => {
+  if (!entry.date || Number.isNaN(entry.date.getTime())) {
+    return undefined;
+  }
+
   if (entry.dateLabel && entry.date) {
     return {
       label: `${entry.dateLabel}:`,
@@ -10,7 +14,7 @@ export const formatEntryDate = (entry: EntryItem) => {
     };
   }
 
-  if (entry.date && entry.endDate) {
+  if (entry.endDate && !Number.isNaN(entry.endDate.getTime())) {
     return {
       date: `${formatMonthYear(entry.date)} - ${formatMonthYear(entry.endDate)}`,
     };
@@ -28,6 +32,7 @@ export const formatEntryDate = (entry: EntryItem) => {
 const formatMonthYear = (date: Date) =>
   date.toLocaleDateString("en-US", {
     month: "long",
+    timeZone: "UTC",
     year: "numeric",
   });
 

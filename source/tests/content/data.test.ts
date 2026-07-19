@@ -25,6 +25,11 @@ const getResumeBullets = () =>
     }),
   );
 
+const getResumeEntries = () =>
+  resumeData.sections.flatMap((section) =>
+    section.items.flatMap((item) => (item.type === "entry" ? [item] : [])),
+  );
+
 const technologyNames = Object.values(technologies);
 
 const startsWithTechnologyName = (text: string) =>
@@ -94,6 +99,71 @@ describe("resumeData", () => {
         "Technical Skills",
       ]),
     );
+  });
+
+  it("contains valid dates and links", () => {
+    const allowedProtocols = new Set(["http:", "https:", "mailto:", "tel:"]);
+
+    for (const contact of resumeData.profile.contacts) {
+      if (contact.href) {
+        expect(allowedProtocols).toContain(new URL(contact.href).protocol);
+      }
+    }
+
+    for (const entry of getResumeEntries()) {
+      if (entry.date) {
+        expect(Number.isNaN(entry.date.getTime())).toBe(false);
+      }
+
+      if (entry.endDate) {
+        expect(entry.date).toBeDefined();
+        expect(Number.isNaN(entry.endDate.getTime())).toBe(false);
+        expect(entry.endDate.getTime()).toBeGreaterThanOrEqual(
+          entry.date!.getTime(),
+        );
+      }
+
+      for (const link of entry.links ?? []) {
+        if (link.url) {
+          expect(allowedProtocols).toContain(new URL(link.url).protocol);
+        }
+      }
+    }
+  });
+
+  it("contains only known technologies and non-empty rich text", () => {
+    const knownTechnologies = new Set(technologyNames);
+
+    for (const section of resumeData.sections) {
+      for (const item of section.items) {
+        if (item.type === "entry") {
+          for (const technology of item.technologies ?? []) {
+            expect(knownTechnologies).toContain(technology);
+          }
+        }
+
+        if (item.type === "skill-group") {
+          for (const skill of item.skills) {
+            expect(knownTechnologies).toContain(skill);
+            expect(skill.trim()).not.toBe("");
+          }
+        }
+
+        if (item.type === "entry" || item.type === "bullet-list") {
+          for (const bullet of item.bullets ?? []) {
+            expect(getBulletText(bullet).trim()).not.toBe("");
+
+            if (typeof bullet !== "string") {
+              for (const segment of bullet) {
+                expect(
+                  typeof segment === "string" ? segment : segment.text,
+                ).not.toBe("");
+              }
+            }
+          }
+        }
+      }
+    }
   });
 
   describe("bullet punctuation and casing", () => {

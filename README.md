@@ -20,6 +20,8 @@ with:
 bun run generate-pdf
 ```
 
+Run the tests with `bun run get-fonts && bun test --run`.
+
 The generated PDF is written to `source/dist/`, which is intentionally ignored
 by Git.
 
@@ -45,3 +47,4 @@ This project is inspired by this blog post: https://wkaisertexas.github.io/blog/
 
 - [ ] Consider re-witting the contents, set the "ai society" as experience
 - [ ] Tune the ATS properly, probably setup tests and stuff
+- [ ] Figure out a way to do live-reloading of the pdfs

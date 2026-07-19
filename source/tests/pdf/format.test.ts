@@ -37,6 +37,58 @@ describe("formatEntryDate", () => {
     ).toEqual({ date: "July 2025" });
   });
 
+  it("formats a date range within the same month", () => {
+    expect(
+      formatEntryDate({
+        type: "entry",
+        title: "Project",
+        date: new Date("2025-06-01T00:00:00.000Z"),
+        endDate: new Date("2025-06-30T00:00:00.000Z"),
+      }),
+    ).toEqual({ date: "June 2025 - June 2025" });
+  });
+
+  it("ignores a date label without a date", () => {
+    expect(
+      formatEntryDate({
+        type: "entry",
+        title: "Project",
+        dateLabel: "Expected graduation",
+      }),
+    ).toBeUndefined();
+  });
+
+  it("ignores an end date without a start date", () => {
+    expect(
+      formatEntryDate({
+        type: "entry",
+        title: "Project",
+        endDate: new Date("2026-03-01T00:00:00.000Z"),
+      }),
+    ).toBeUndefined();
+  });
+
+  it("rejects an invalid start date", () => {
+    expect(
+      formatEntryDate({
+        type: "entry",
+        title: "Project",
+        date: new Date("invalid"),
+      }),
+    ).toBeUndefined();
+  });
+
+  it("falls back to the start date when the end date is invalid", () => {
+    expect(
+      formatEntryDate({
+        type: "entry",
+        title: "Project",
+        date: new Date("2025-07-01T00:00:00.000Z"),
+        endDate: new Date("invalid"),
+      }),
+    ).toEqual({ date: "July 2025" });
+  });
+
   it("returns undefined when no date exists", () => {
     expect(
       formatEntryDate({
