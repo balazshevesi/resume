@@ -3,6 +3,26 @@
 This project aims to create the most optimized resume possible for passing
 ATS (Applicant Tracking Systems), primarily for software engineering roles.
 
+## Development
+
+The PDF resume source lives in `source/`. Install dependencies and download the
+fonts with Bun:
+
+```sh
+bun install
+bun run build
+```
+
+Use `bun run dev` to preview the resume in the browser. Generate the final PDF
+with:
+
+```sh
+bun run generate-pdf
+```
+
+The generated PDF is written to `source/dist/`, which is intentionally ignored
+by Git.
+
 ## Other Solutions
 
 **Common solutions include:**
