@@ -9,7 +9,7 @@ export const formatEntryDate = (entry: EntryItem) => {
 
   if (entry.dateLabel && entry.date) {
     return {
-      label: `${entry.dateLabel}:`,
+      label: `${entry.dateLabel}: `,
       date: formatMonthYear(entry.date),
     };
   }

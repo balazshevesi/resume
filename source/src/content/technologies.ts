@@ -1,6 +1,8 @@
 export const technologies = {
   adafruitIo: "Adafruit IO",
   aiAgents: "AI Agents",
+  aws: "AWS",
+  vitest: "Vitest",
   bun: "Bun",
   chromeDevTools: "Chrome DevTools",
   convex: "Convex",
@@ -29,7 +31,7 @@ export const technologies = {
   paneruWm: "PaneruWM",
   postgresql: "PostgreSQL",
   python: "Python",
-  react: "React.js",
+  react: "React",
   reactServerComponents: "React Server Components",
   restApis: "REST APIs",
   rss: "RSS",

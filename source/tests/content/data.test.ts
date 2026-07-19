@@ -95,7 +95,8 @@ describe("resumeData", () => {
     expect(resumeData.sections.map((section) => section.title)).toEqual(
       expect.arrayContaining([
         "Education",
-        "Projects",
+        "Experience",
+        "Technical Projects",
         "Technical Skills",
       ]),
     );

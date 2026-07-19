@@ -118,13 +118,6 @@ export const resumeData: ResumeData = {
               { text: "Relevant Coursework: ", bold: true },
               "Data Structures and Algorithms, Operating Systems, Machine Learning, Software Testing.",
             ],
-            [
-              {
-                text: "AI Society - Vice President, R&D Lead Developer: ",
-                bold: true,
-              },
-              `Led the development of a RAG-enabled AI-Chatbot ${technologies.react} project and actively competed in technical hackathons.`,
-            ],
           ],
         },
         {
@@ -132,6 +125,23 @@ export const resumeData: ResumeData = {
           title: "The Odin Project (Full Stack JavaScript)",
           location: "Online",
           date: new Date("2023-07-01"),
+        },
+      ],
+    },
+    {
+      title: "Experience",
+      items: [
+        {
+          type: "entry",
+          title: "AI Society, Linnaeus University",
+          subtitle: "Vice President & R&D Lead Developer",
+          location: "Växjö, Sweden",
+          dateLabel: "Since",
+          date: new Date("2025-01-01"),
+          bullets: [
+            "Led development of a RAG-enabled AI chatbot project that helps non-Swedish speakers navigate Swedish visa migration.",
+            "Coordinated technical direction and delivered an MVP under strict deadline, demonstrated on Swedish national television.",
+          ],
         },
       ],
     },
@@ -151,7 +161,7 @@ export const resumeData: ResumeData = {
           links: [
             {
               label: "Code",
-              url: "https://github.com/balazshevesi/clarus-visa-migration-assistant",
+              url: "https://github.com/balazshevesi/clarus",
             },
             {
               label: "SVT",
@@ -161,7 +171,6 @@ export const resumeData: ResumeData = {
           bullets: [
             `Architected a serverless ${technologies.react} SPA using ${technologies.tailwind} and ${technologies.convex}, integrating the ${technologies.vercelAiSdk} to build a RAG-based chatbot that simplifies the Swedish visa migration process for non-Swedish speakers.`,
             "Engineered an AI translation and filtering layer for the RAG pipeline, reducing multilingual context bloat and cutting observed cross-language answer failures by 95%.",
-            "Led the technical execution as R&D Lead Developer, delivering a stable MVP under an urgent two day deadline that was demonstrated on Swedish national television (SVT).",
           ],
         },
         {
@@ -178,14 +187,13 @@ export const resumeData: ResumeData = {
           links: [
             {
               label: "Code",
-              url: "https://github.com/balazshevesi/plant-monitoring-system",
+              url: "https://github.com/balazshevesi/plant-monitoring-iot",
             },
           ],
           bullets: [
-            `Architected a full-stack IoT pipeline using ${technologies.microPython} on Raspberry Pi Pico WH to sample temperature, humidity, light-intensity and soil-moisture every second, then publish via ${technologies.mqtt} to ${technologies.adafruitIo}.`,
+            `Architected a full-stack IoT pipeline using ${technologies.microPython} on Raspberry Pi Pico WH to sample temperature, humidity, light intensity, and soil moisture every second, then publish via ${technologies.mqtt} to ${technologies.adafruitIo}.`,
             `Containerized ${technologies.telegraf}, ${technologies.influxDb}, and ${technologies.grafana} with ${technologies.dockerCompose}, enabling one-click deployment, reducing manual setup steps from 12 to a single command.`,
             `Designed a reusable sensor-abstraction layer in ${technologies.microPython}, defining a Sensor superclass to reduce code duplication by roughly 40% and simplify the addition of new sensor types.`,
-            "Set up a soil moisture alert system via webhooks, allowing faster response times to prevent over or under watering.",
           ],
         },
         {
@@ -203,13 +211,12 @@ export const resumeData: ResumeData = {
           links: [
             {
               label: "Code",
-              url: "https://github.com/balazshevesi/ai-news-summarizing-application",
+              url: "https://github.com/balazshevesi/ai-news-feed-summarizer",
             },
           ],
           bullets: [
             "Collaborated in a five-person Scrum team, running weekly sprints, daily stand-ups, sprint planning and retrospectives, delivering a fully functional MVP in five sprints, meeting 100% of client requirements.",
-            `Developed a ${technologies.javaFx} frontend (${technologies.fxml} + ${technologies.css}) featuring feed toggles, settings screen, togglable themes, AI summary views and local ${technologies.sqlite} caching for offline reading, improving first-load time by an estimated 60%.`,
-            `Structured the codebase as a ${technologies.gradle} multi-project to improve build times and enforce clear separation of concerns.`,
+            `Developed a ${technologies.javaFx} frontend (${technologies.fxml} + ${technologies.css}) featuring feed toggles, settings screen, theme switching, AI summary views and local ${technologies.sqlite} caching for offline reading, improving first-load time by an estimated 60%.`,
           ],
         },
         {
@@ -236,7 +243,6 @@ export const resumeData: ResumeData = {
           bullets: [
             "Reverse-engineered and documented Skola24's private API by intercepting and analyzing client requests to reconstruct its signature-generation and five-step handshake protocol without documentation, giving programmatic access to timetables.",
             `Crafted a responsive user interface using ${technologies.next}, ${technologies.reactServerComponents}, and ${technologies.tailwind}, achieving an average Lighthouse score of 99 across all categories and reducing the number of clicks to access school schedules from 11 to 2 clicks.`,
-            `Leveraged ${technologies.next} ${technologies.reactServerComponents} to call Skola24's API on the server-side, bypassing browser CORS restrictions.`,
           ],
         },
       ],
@@ -282,6 +288,7 @@ export const resumeData: ResumeData = {
             technologies.zod,
             technologies.express,
             technologies.hono,
+            technologies.vitest,
             technologies.drizzleOrm,
             technologies.convex,
           ],
@@ -299,12 +306,13 @@ export const resumeData: ResumeData = {
             technologies.restApis,
             technologies.aiAgents,
             technologies.chromeDevTools,
+            technologies.aws,
           ],
         },
         {
-          type: "skill-group",
+          type: "inline-list",
           label: "Concepts",
-          skills: [
+          values: [
             "Data Structures and Algorithms",
             "RAG",
             "Agile/Scrum",
