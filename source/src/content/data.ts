@@ -294,6 +294,7 @@ export const resumeData: ResumeData = {
             technologies.express,
             // technologies.hono,
             technologies.vitest,
+            technologies.jest,
             technologies.drizzleOrm,
             // technologies.convex,
           ],
