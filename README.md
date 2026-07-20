@@ -25,6 +25,24 @@ Run the tests with `bun run get-fonts && bun test --run`.
 The generated PDF is written to `source/dist/`, which is intentionally ignored
 by Git.
 
+## Tailoring
+
+Tailor the resume to a specific job description from `source/`:
+
+```sh
+bun run tailor ./job-description.txt
+```
+
+You can also paste the job description directly:
+
+```sh
+bun run tailor "Paste the job description here"
+```
+
+The tailoring workflow runs opencode headlessly with the `resume-tailor` agent.
+It is constrained to edit `src/content/data.ts` and then verify the result with
+TypeScript, tests and PDF generation.
+
 ## Other Solutions
 
 **Common solutions include:**

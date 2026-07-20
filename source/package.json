@@ -12,6 +12,8 @@
     "lint": "bun eslint .",
     "postinstall": "bun patch-package",
     "preview": "bun vite preview",
+    "tailor": "bun scripts/tailorResume.ts",
+    "tailor:verify": "bun run tsc -b && bun test --run && bun run generate-pdf",
     "test": "bun vitest run",
     "test:watch": "bun vitest"
   },

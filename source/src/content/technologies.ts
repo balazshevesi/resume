@@ -50,6 +50,7 @@ export const technologies = {
   visualStudioCode: "Visual Studio Code",
   zed: "Zed",
   zod: "Zod",
-} as const;
+  jest: "Jest",
+};
 
 export type Technology = (typeof technologies)[keyof typeof technologies];

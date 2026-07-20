@@ -8,10 +8,10 @@ import { styles } from "./styles";
 // Full resume PDF document, composed from the profile header and each resume section.
 export const Resume = () => (
   <Document
-    title={`${resumeData.profile.fileName}`}
+    title={`${resumeData.profile.pdfFileName}`}
     author={resumeData.profile.name}
-    subject="Software engineering resume"
-    description="Resume for Balazs Hevesi, software engineering student focused on frontend engineering, TypeScript, React, AI applications, and full-stack project development. Comfortable working in fast-paced environments"
+    subject={resumeData.profile.pdfSubject}
+    description={resumeData.profile.pdfDescription}
     language="en-US"
     pdfVersion="1.4"
     tagged

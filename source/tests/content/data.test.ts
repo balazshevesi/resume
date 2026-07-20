@@ -35,7 +35,7 @@ const startsWithTechnologyName = (text: string) =>
 describe("resumeData", () => {
   it("has a usable profile", () => {
     expect(resumeData.profile.name.trim()).not.toBe("");
-    expect(resumeData.profile.fileName).toMatch(/^[a-z0-9_-]+$/);
+    expect(resumeData.profile.pdfFileName).toMatch(/^[a-z0-9_-]+$/);
     expect(resumeData.profile.contacts.length).toBeGreaterThan(0);
 
     for (const contact of resumeData.profile.contacts) {

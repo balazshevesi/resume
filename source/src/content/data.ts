@@ -9,9 +9,11 @@ export type Contact = {
 
 export type ResumeData = {
   profile: {
-    fileName: string;
+    pdfFileName: string;
     name: string;
     headline: string;
+    pdfSubject: string;
+    pdfDescription: string;
     contacts: Contact[];
   };
   sections: ResumeSection[];
@@ -72,7 +74,10 @@ export type InlineListItem = {
 
 export const resumeData: ResumeData = {
   profile: {
-    fileName: "balazs_hevesi_software_engineering_frontend_resume",
+    pdfFileName: "balazs_hevesi_software_engineering_frontend_resume",
+    pdfDescription:
+      "Resume for Balazs Hevesi, software engineering student focused on frontend engineering, TypeScript, React, AI applications, and full-stack project development. Comfortable working in fast-paced environments",
+    pdfSubject: "Software engineering resume",
     name: "Balazs Hevesi",
     headline:
       "Software Engineering Student | Frontend, TypeScript and AI Development",

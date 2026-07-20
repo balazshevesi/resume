@@ -18,7 +18,7 @@ describe("generatePdf", () => {
       expect(output.length).toBeGreaterThan(0);
       expect(output.subarray(0, 5).toString()).toBe("%PDF-");
       expect(outputUrl.pathname).toContain(
-        `${resumeData.profile.fileName}.pdf`,
+        `${resumeData.profile.pdfFileName}.pdf`,
       );
     } finally {
       await rm(temporaryDirectory, { recursive: true, force: true });
