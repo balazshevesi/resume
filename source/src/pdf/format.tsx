@@ -8,6 +8,12 @@ export const formatEntryDate = (entry: EntryItem) => {
   }
 
   if (entry.dateLabel && entry.date) {
+    if (entry.dateLabel === "Since") {
+      return {
+        date: `${formatMonthYear(entry.date)}–Present`,
+      };
+    }
+
     return {
       label: `${entry.dateLabel}: `,
       date: formatMonthYear(entry.date),
@@ -16,7 +22,7 @@ export const formatEntryDate = (entry: EntryItem) => {
 
   if (entry.endDate && !Number.isNaN(entry.endDate.getTime())) {
     return {
-      date: `${formatMonthYear(entry.date)} - ${formatMonthYear(entry.endDate)}`,
+      date: `${formatMonthYear(entry.date)}–${formatMonthYear(entry.endDate)}`,
     };
   }
 

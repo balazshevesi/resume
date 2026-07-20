@@ -160,11 +160,11 @@ export const resumeData: ResumeData = {
           date: new Date("2026-03-01"),
           links: [
             {
-              label: "Code",
+              label: technologies.github,
               url: "https://github.com/balazshevesi/clarus",
             },
             {
-              label: "SVT",
+              label: "SVT Feature",
               url: "https://www.svt.se/nyheter/lokalt/smaland/lnu-studenter-utvecklar-egen-ai-bot-ska-hjalpa-folk-fran-utlandet-med-visum",
             },
           ],
@@ -186,7 +186,7 @@ export const resumeData: ResumeData = {
           date: new Date("2025-07-01"),
           links: [
             {
-              label: "Code",
+              label: technologies.github,
               url: "https://github.com/balazshevesi/plant-monitoring-iot",
             },
           ],
@@ -210,7 +210,7 @@ export const resumeData: ResumeData = {
           date: new Date("2025-06-01"),
           links: [
             {
-              label: "Code",
+              label: technologies.github,
               url: "https://github.com/balazshevesi/ai-news-feed-summarizer",
             },
           ],
@@ -232,11 +232,11 @@ export const resumeData: ResumeData = {
           date: new Date("2024-07-01"),
           links: [
             {
-              label: "Code",
+              label: technologies.github,
               url: "https://github.com/balazshevesi/nar-slutar-lektionen",
             },
             {
-              label: "Live",
+              label: "Live Demo",
               url: "https://www.xn--nr-slutar-lektionen-gwb.net/",
             },
           ],
@@ -267,14 +267,14 @@ export const resumeData: ResumeData = {
           type: "skill-group",
           label: "Programming Languages",
           skills: [
-            technologies.python,
-            technologies.java,
             technologies.javascript,
             technologies.typescript,
             technologies.html,
             technologies.css,
             technologies.scss,
             technologies.sql,
+            technologies.python,
+            technologies.java,
           ],
         },
         {
@@ -297,14 +297,13 @@ export const resumeData: ResumeData = {
           type: "skill-group",
           label: "Tools & DevOps",
           skills: [
-            technologies.docker,
             technologies.npm,
             technologies.vite,
-            technologies.bun,
-            technologies.git,
-            technologies.github,
-            technologies.restApis,
             technologies.aiAgents,
+            technologies.git,
+            technologies.docker,
+            technologies.bun,
+            technologies.restApis,
             technologies.chromeDevTools,
             technologies.aws,
           ],
@@ -337,7 +336,7 @@ export const resumeData: ResumeData = {
           values: [
             "Open to relocate",
             "Able to work hybrid",
-            "Able to work full time after July 2027",
+            "Available full-time from July 2027",
           ],
         },
         {

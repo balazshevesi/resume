@@ -16,6 +16,17 @@ describe("formatEntryDate", () => {
     });
   });
 
+  it("formats a since label as an open-ended date range", () => {
+    expect(
+      formatEntryDate({
+        type: "entry",
+        title: "Role",
+        date: new Date(2026, 2, 1),
+        dateLabel: "Since",
+      }),
+    ).toEqual({ date: "March 2026–Present" });
+  });
+
   it("formats a date range", () => {
     expect(
       formatEntryDate({
@@ -24,7 +35,7 @@ describe("formatEntryDate", () => {
         date: new Date(2025, 5, 1),
         endDate: new Date(2026, 2, 1),
       }),
-    ).toEqual({ date: "June 2025 - March 2026" });
+    ).toEqual({ date: "June 2025–March 2026" });
   });
 
   it("formats a date without a label or end date", () => {
@@ -45,7 +56,7 @@ describe("formatEntryDate", () => {
         date: new Date("2025-06-01T00:00:00.000Z"),
         endDate: new Date("2025-06-30T00:00:00.000Z"),
       }),
-    ).toEqual({ date: "June 2025 - June 2025" });
+    ).toEqual({ date: "June 2025–June 2025" });
   });
 
   it("ignores a date label without a date", () => {
