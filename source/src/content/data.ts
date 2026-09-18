@@ -74,13 +74,12 @@ export type InlineListItem = {
 
 export const resumeData: ResumeData = {
   profile: {
-    pdfFileName: "balazs_hevesi_software_engineering_frontend_resume",
+    pdfFileName: "balazs_hevesi_software_engineering_resume",
     pdfDescription:
       "Resume for Balazs Hevesi, software engineering student focused on frontend engineering, TypeScript, React, AI applications, and full-stack project development. Comfortable working in fast-paced environments",
     pdfSubject: "Software engineering resume",
     name: "Balazs Hevesi",
-    headline:
-      "Software Engineering Student | Frontend, TypeScript and AI Development",
+    headline: "Computer Science Student | Full-stack Software Engineer",
     contacts: [
       {
         label: "Phone",
@@ -129,6 +128,7 @@ export const resumeData: ResumeData = {
           type: "entry",
           title: "The Odin Project (Full Stack JavaScript)",
           location: "Online",
+          dateLabel: "Completed",
           date: new Date("2023-07-01"),
         },
       ],
@@ -138,14 +138,26 @@ export const resumeData: ResumeData = {
       items: [
         {
           type: "entry",
+          title: "Videntic",
+          subtitle: "Software Engineer Intern",
+          location: "Stockholm, Sweden (Hybrid)",
+          dateLabel: "Since",
+          date: new Date("2026-08-01"),
+          bullets: [
+            `Cut local server startup time 11× and memory usage >50% by leading a staged migration of 52 pages from ${technologies.next} to ${technologies.vite} and optimizing development runtimes.`,
+            `Added outcome telemetry across 14 dashboard views, distinguishing successful, empty, and failed loads to expose previously silent data-fetch failures helping developers track customer-reported data loading bugs.`,
+            `Built a full-stack PostgreSQL workflow for resolving audit issues directly in the application, preserving existing behavior across 211 audit API tests.`,
+          ],
+        },
+        {
+          type: "entry",
           title: "AI Society, Linnaeus University",
           subtitle: "Vice President & R&D Lead Developer",
           location: "Växjö, Sweden",
           dateLabel: "Since",
           date: new Date("2026-03-01"),
           bullets: [
-            "Led development of a RAG-enabled AI chatbot project that helps non-Swedish speakers navigate Swedish visa migration.",
-            "Coordinated technical direction and delivered an MVP under strict deadline, demonstrated on Swedish national television.",
+            "Guided technical direction for the 4-person Clarus team from architecture through MVP delivery under a strict deadline, showcased on Swedish national television 5 weeks ahead of schedule.",
           ],
         },
       ],
@@ -174,7 +186,7 @@ export const resumeData: ResumeData = {
             },
           ],
           bullets: [
-            `Architected a serverless ${technologies.react} SPA using ${technologies.tailwind} and ${technologies.convex}, integrating the ${technologies.vercelAiSdk} to build a RAG-based chatbot that simplifies the Swedish visa migration process for non-Swedish speakers.`,
+            `Architected a serverless RAG application for Swedish visa guidance, integrating retrieval across 250+ source documents, multilingual processing, and conversational responses into a single workflow.`,
             "Engineered an AI translation and filtering layer for the RAG pipeline, reducing multilingual context bloat and cutting observed cross-language answer failures by 95%.",
           ],
         },
@@ -196,32 +208,8 @@ export const resumeData: ResumeData = {
             },
           ],
           bullets: [
-            `Built a full-stack IoT pipeline using ${technologies.microPython} on Raspberry Pi Pico WH to sample temperature, humidity, light intensity, and soil moisture every second, then publish via ${technologies.mqtt} to ${technologies.adafruitIo}.`,
+            `Built a full-stack IoT pipeline using ${technologies.microPython} on Raspberry Pi Pico WH to sample 4 environmental signals every second, then publish via ${technologies.mqtt} to ${technologies.adafruitIo}.`,
             `Containerized ${technologies.telegraf}, ${technologies.influxDb}, and ${technologies.grafana} with ${technologies.dockerCompose}, enabling one-click deployment, reducing manual setup steps from 12 to a single command.`,
-            `Designed a reusable sensor-abstraction layer in ${technologies.microPython}, defining a Sensor superclass to reduce code duplication by roughly 40% and simplify the addition of new sensor types.`,
-          ],
-        },
-        {
-          type: "entry",
-          title: "AI News Summarizing Application",
-          technologies: [
-            technologies.java,
-            technologies.javaFx,
-            technologies.postgresql,
-            technologies.sqlite,
-            technologies.css,
-            technologies.rss,
-          ],
-          date: new Date("2025-06-01"),
-          links: [
-            {
-              label: technologies.github,
-              url: "https://github.com/balazshevesi/ai-news-feed-summarizer",
-            },
-          ],
-          bullets: [
-            "Collaborated in a five-person Scrum team, running weekly sprints, daily stand-ups, sprint planning and retrospectives, incorporating client feedback to deliver a fully functional MVP in five sprints, meeting 100% of client requirements.",
-            `Developed a ${technologies.javaFx} frontend (${technologies.fxml} + ${technologies.css}) featuring feed toggles, settings screen, theme switching, AI summary views and local ${technologies.sqlite} caching for offline reading, improving first-load time by an estimated 60%.`,
           ],
         },
         {
@@ -246,7 +234,7 @@ export const resumeData: ResumeData = {
             },
           ],
           bullets: [
-            "Reverse-engineered and documented Skola24's private API by intercepting and analyzing client requests to reconstruct its signature-generation and five-step handshake protocol without documentation, unlocking programmatic access to timetables.",
+            "Reverse-engineered and documented Skola24's private API by intercepting and analyzing client requests to reconstruct its signature-generation and five-step handshake protocol without documentation.",
             `Crafted a responsive user interface using ${technologies.next}, ${technologies.reactServerComponents}, and ${technologies.tailwind}, achieving an average Lighthouse score of 99 across all categories and reducing the number of clicks to access school schedules from 11 to 2 clicks.`,
           ],
         },
@@ -258,9 +246,9 @@ export const resumeData: ResumeData = {
         {
           type: "bullet-list",
           bullets: [
-            `Contributed merged documentation for major open-source packages, including ${technologies.supabase}, ${technologies.zod}, ${technologies.rxjs}, and ${technologies.t3Env}, used by millions of developers, enhancing the overall developer experience and reducing adoption friction.`,
-            `Backported ${technologies.paneruWm} from ${technologies.macos} 26 to ${technologies.macos} 15, expanding compatibility and driving broader user adoption.`,
-            `Authored and published two packages on ${technologies.npm}, totaling over 8k downloads, streamlining the retrieval of llms.txt files.`,
+            `Contributed 10+ merged pull requests for major open-source packages, including ${technologies.supabase}, ${technologies.zod}, ${technologies.rxjs}, and ${technologies.t3Env}, used by millions of developers.`,
+            `Backported ${technologies.paneruWm} from ${technologies.macos} 26 to ${technologies.macos} 15.`,
+            `Authored and published two packages on ${technologies.npm}, totaling 10k+ downloads, streamlining the retrieval of llms.txt files.`,
           ],
         },
       ],
@@ -276,7 +264,6 @@ export const resumeData: ResumeData = {
             technologies.typescript,
             technologies.html,
             technologies.css,
-            technologies.scss,
             technologies.sql,
             technologies.python,
             technologies.java,
@@ -288,13 +275,11 @@ export const resumeData: ResumeData = {
           skills: [
             technologies.react,
             technologies.next,
-            technologies.tailwind,
             technologies.node,
             technologies.zod,
             technologies.express,
             // technologies.hono,
             technologies.vitest,
-            technologies.jest,
             technologies.drizzleOrm,
             // technologies.convex,
           ],
@@ -303,28 +288,17 @@ export const resumeData: ResumeData = {
           type: "skill-group",
           label: "Tools & DevOps",
           skills: [
-            technologies.npm,
             technologies.vite,
-            technologies.aiAgents,
             technologies.git,
             technologies.docker,
-            technologies.bun,
-            technologies.restApis,
-            technologies.chromeDevTools,
             technologies.aws,
+            technologies.cicd,
           ],
         },
         {
-          type: "inline-list",
-          label: "Concepts",
-          values: [
-            "Data Structures and Algorithms",
-            "RAG",
-            "Agile/Scrum",
-            "CI/CD",
-            "Database Design",
-            "Software Architecture",
-          ],
+          type: "skill-group",
+          label: "AI",
+          skills: [technologies.rag, technologies.aiAgents, technologies.vercelAiSdk],
         },
       ],
     },
@@ -342,7 +316,7 @@ export const resumeData: ResumeData = {
           values: [
             "Open to relocate",
             "Able to work hybrid",
-            "Available full-time from July 2027",
+            "Available full-time from June 2027",
           ],
         },
         {

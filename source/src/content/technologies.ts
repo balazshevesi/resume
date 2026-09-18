@@ -51,6 +51,8 @@ export const technologies = {
   zed: "Zed",
   zod: "Zod",
   jest: "Jest",
+  cicd: "CI/CD",
+  rag: "RAG",
 };
 
 export type Technology = (typeof technologies)[keyof typeof technologies];
