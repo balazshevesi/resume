@@ -38,6 +38,26 @@ export type RichTextSegment = {
 
 export type RichText = string | Array<string | RichTextSegment>;
 
+export const bold = (text: string): RichTextSegment => ({ text, bold: true });
+
+export const italic = (text: string): RichTextSegment => ({ text, italic: true });
+
+export const rich = (
+  strings: TemplateStringsArray,
+  ...values: Array<string | RichTextSegment>
+): RichText => {
+  const segments: Array<string | RichTextSegment> = [];
+
+  strings.forEach((text, index) => {
+    if (text) segments.push(text);
+    if (index < values.length && values[index] !== "") {
+      segments.push(values[index]);
+    }
+  });
+
+  return segments;
+};
+
 export type EntryItem = {
   type: "entry";
   title: string;
@@ -118,10 +138,7 @@ export const resumeData: ResumeData = {
           dateLabel: "Expected graduation",
           meta: ["GPA: 3.51 / 4.0"],
           bullets: [
-            [
-              { text: "Relevant Coursework: ", bold: true },
-              "Data Structures and Algorithms, Operating Systems, Machine Learning, Software Testing.",
-            ],
+            rich`${bold("Relevant Coursework: ")}Data Structures and Algorithms, Operating Systems, Machine Learning, Software Testing.`,
           ],
         },
         {
