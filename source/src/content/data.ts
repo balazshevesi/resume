@@ -40,7 +40,10 @@ export type RichText = string | Array<string | RichTextSegment>;
 
 export const bold = (text: string): RichTextSegment => ({ text, bold: true });
 
-export const italic = (text: string): RichTextSegment => ({ text, italic: true });
+export const italic = (text: string): RichTextSegment => ({
+  text,
+  italic: true,
+});
 
 export const rich = (
   strings: TemplateStringsArray,
@@ -139,6 +142,7 @@ export const resumeData: ResumeData = {
           meta: ["GPA: 3.51 / 4.0"],
           bullets: [
             rich`${bold("Relevant Coursework: ")}Data Structures and Algorithms, Operating Systems, Machine Learning, Software Testing.`,
+            rich`${bold("Hackathon: ")}Placed 2nd as part of a team in the SKF track at the Gothenburg Tech Week × Chalmers Hackathon.`,
           ],
         },
         {
@@ -310,13 +314,19 @@ export const resumeData: ResumeData = {
             technologies.docker,
             technologies.aws,
             technologies.cicd,
+            technologies.rag,
+            technologies.aiAgents,
           ],
         },
-        {
-          type: "skill-group",
-          label: "AI",
-          skills: [technologies.rag, technologies.aiAgents, technologies.vercelAiSdk],
-        },
+        // {
+        //   type: "skill-group",
+        //   label: "AI",
+        //   skills: [
+        //     technologies.rag,
+        //     technologies.aiAgents,
+        //     technologies.vercelAiSdk,
+        //   ],
+        // },
       ],
     },
     {

@@ -70,7 +70,7 @@ export const styles = StyleSheet.create({
   },
   item: {
     marginBottom: 2,
-    marginLeft: 5,
+    marginLeft: 8,
   },
   entryHeader: {
     flexDirection: "row",
